@@ -14,6 +14,8 @@ examples out there. With this plugin, making a new menu is the simplest it has e
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   Home <self>
+   test.md
 
 Features
 --------
