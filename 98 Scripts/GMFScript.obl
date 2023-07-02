@@ -1,0 +1,14 @@
+﻿scn GMFScript
+
+;;@TYPE~Quest Script~
+;;@OBJT~GMF~
+;;@DESC~~
+
+float fQuestDelayTime	;@float::fQuestDelayTime::How often the quest script runs
+
+float fGameX				;@float::fGameX::The X position of a menu element
+float fGameY				;@float::fGameY::The Y position of a menu element
+
+int bDragging			;@boolean::bDragging::Controls dragging support
+
+float fSliderPos			;@float::fSliderPos::The position of a slider's marker

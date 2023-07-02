@@ -1,0 +1,27 @@
+﻿scn GMPFOnScrollVerticalUpFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Private~
+;;@DESC~When the user inputs a scroll up command, this function will take the a
+;;menu string and apply the appropriate amount of scroll to said menu tile~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+int iCurrentEntry	;@int::iCurrentEntry::The current listindex of said list
+int iMaxEntry		;@int::iMaxEntry::The max possible listindex of said list
+
+begin function {sTile}
+	Let iCurrentEntry := Call GMFGetTileFloatValue sTile "user7"
+	Let iMaxEntry := Call GMFGetTileFloatValue sTile "user2"
+
+	;; Increment value and see if not beyond range of scroll
+	;; Left is a negative value
+	Let iCurrentEntry += -1
+	if eval (iCurrentEntry <= iMaxEntry)
+		;; The marker must be set to these values before and after in order to actually apply the value
+		;; This is confirmed by UESP and Maskar
+		Call GMFSetTileFloatValue sTile "user5" (-999999.0)
+		Call GMFSetTileFloatValue sTile "user5" iCurrentEntry ; set the position of marker via 'user5'
+		Call GMFSetTileFloatValue sTile "user5" 0.0
+	endif
+end

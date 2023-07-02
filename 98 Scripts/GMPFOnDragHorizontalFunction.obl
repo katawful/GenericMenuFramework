@@ -1,0 +1,40 @@
+﻿scn GMPFOnDragHorizontalFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Private~
+;;@DESC~When the user is holding the left mouse button and on a marker, this function
+;;will use the cursor's X position and attemp to update the scroll bar to said position.
+;;This function relies on the left mouse button to be held, and dragging to be enabled
+;;by the scripting.~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+float fScreenX		;@float::fScreenX::The screen's X value
+float fCurrentX		;@float::fCurrentX::The cursor's current X value
+float fGameX			;@float::fGameX::The X value of the cursor adjusted to UI coordinates
+
+float fSliderPos		;@float::fSliderPos::The position of the slider
+
+begin Function {sTile}
+
+	;; End dragging when left click is no longer held
+	if eval (GetMouseButtonPress 0) != 256
+		Let GMF.bDragging := 0
+		return
+	endif
+
+	;; Get direct screen X value
+	Let fScreenX := GetNumericINISetting "iSize W:Display"
+	Let fCurrentX := GetMousePos y
+	Let fGameX := fCurrentX * (960 / fScreenX)
+
+	;; Clamp to slider position
+	;; INFO: The game will truncate the float value here. The variables must be floats for the math to work out
+	Let fSliderPos := (fGameX - GMF.fGameX) * GMF.fSliderPos
+
+	;; The marker must be set to these values before and after in order to actually apply the value
+	;; This is confirmed by UESP and Maskar
+	Call GMFSetTileFloatValue sTile "user5" (-999999.0)
+	Call GMFSetTileFloatValue sTile "user5" fSliderPos ; set the position of marker via 'user5'
+	Call GMFSetTileFloatValue sTile "user5" 0.0
+end

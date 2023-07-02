@@ -1,0 +1,13 @@
+﻿scn GMFShowMenu
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This launches a generic menu~
+;;@PARA~@string::sPath::File path for the menu to open~
+string_var sPath
+;;@PARA~@int::iClosingID::ID that will close the menu, default 0~
+int iClosingID
+
+begin function {sPath, iClosingID}
+	ShowGenericMenu $sPath iClosingID
+end

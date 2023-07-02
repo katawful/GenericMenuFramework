@@ -1,0 +1,21 @@
+﻿scn GMPFOnHoldLeftMouseMainFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Private~
+;;@DESC~Used for dragging, this initializes dragging by checking UI values~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+string_var sCurrComponent	;@string::sCurrComponent::Used to see what the current name is for scrolling
+
+begin function {sTile}
+	Let sCurrComponent := GetActiveUIComponentName
+
+	if eval (sCurrComponent == "vertical_scroll_marker")
+		Call GMPFOnClickLeftHoldDragVerticalFunction sTile sCurrComponent
+	elseif eval (sCurrComponent == "horizontal_scroll_marker")
+		Call GMPFOnClickLeftHoldDragHorizontalFunction sTile sCurrComponent
+	endif
+
+	sv_Destruct sCurrComponent
+end

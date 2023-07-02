@@ -1,0 +1,52 @@
+﻿scn GMFGrabParentStringTraits
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This takes a full tile name for a tile, then traverses up each ancestor, putting each string trait
+;;specified into an array~
+;;@PARA~@string::sTile::The tile to traverse from~
+string_var sTile
+;;@PARA~@string::sTrait::The trait to use~
+string_var sTrait
+
+array_var aTraits		;@array::aTraits::Stores all the traits when walking up the ancestry
+array_var aSubStrings	;@array::aSubStrings::Substrings of tile name
+string_var sModTile		;@string::sModTile::Modified tile name to be split
+int iIndex				;@int::iIndex::Index for while loop
+int iSize				;@int::iSize::Size of array
+string_var sTemp			;@string::sTemp::Holds values for comparison
+string_var sSubTile		;@string::sSubTile::Holds tile for usage
+
+begin function {sTile, sTrait}
+
+	;; Grab the full name from the short tile and enclose it to be split
+	Let sModTile := Call GMFGetTileFullName sTile
+	Let sModTile := "\" + sModTile + "\"
+
+	Let aSubStrings := sv_Split sModTile "\"
+
+	Let aTraits := ar_Construct array
+	Let iSize := ar_Size aSubStrings
+
+	Let sSubTile := ""
+
+	;; Loop over substrings, grabbing trait values on the go
+	while iIndex < iSize
+
+		;; INFO: We don't want the beginning of the string to have a \
+		if eval iIndex != 0
+			Let sSubTile += "\"
+		endif
+		Let sSubTile += (aSubStrings[iIndex])
+		Let sTemp := call GMFGetTileStringValue sSubTile sTrait
+
+		ar_Append aTraits sTemp
+
+		Let iIndex += 1
+	loop
+
+	SetFunctionValue aTraits
+	sv_Destruct sModTile sSubTile
+	Let aTraits := ar_Null
+	Let aSubStrings := ar_Null
+end

@@ -1,0 +1,16 @@
+﻿scn GMFGetTileStringValue
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Wrapper for `SetMenuStringValue`, only for generic menus~
+;;@PARA~@string::sTile::The tile to get a value for~
+string_var sTile
+;;@PARA~@string::sTrait::The trait to get~
+string_var sTrait
+
+string_var sReturn		;@string::sReturn::Return value
+
+begin function {sTile, sTrait}
+	let sReturn := GetMenuStringValue "%z\%z" sTile sTrait 1011
+	SetFunctionValue sReturn
+end

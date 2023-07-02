@@ -1,0 +1,57 @@
+﻿scn GMPFOnClickLeftHoldDragVerticalFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Private~
+;;@DESC~When the user holds the left mouse button and is on a vertical scroll bar,
+;;this function will get the height values of scroll bar + the marker and return said values~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+float fMarkerHeight		;@float::fMarkerHeight::Current height of the marker
+
+float fScrollY			;@float::fScrollY::Y value of scroll bar
+float fScrollHeight		;@float::fScrollHeight::Height of scroll bar
+float fScrollStart		;@float::fScrollStart::Start Y position of scroll bar
+float fScrollEnd			;@float::fScrollEnd::End Y position of scroll bar
+float fScrollTotal		;@float::fScrollTotal::Total height of scrol bar
+
+string_var sCurrComponent ;@string::sCurrComponent::Used to see what the current name is for scrolling
+
+array_var aY				;@array::aY::Y values from ancestry
+int iIndex				;@int::iIndex::Index for while loop
+int iSize				;@int::iSize::Size of array
+
+Begin Function {sTile, sCurrComponent}
+
+	;; Only work if touching marker
+	if eval (sCurrComponent != "vertical_scroll_marker")
+		return
+	endif
+
+	;; Enable dragging
+	Let GMF.bDragging := 1
+
+	;; Clamp scrolling to bounds of marker and scrollbar
+	Let fMarkerHeight := call GMFGetTileFloatValue (sTile + "\vertical_scroll_marker") "height"
+	Let fMarkerHeight *= 2
+	Let fScrollHeight := call GMFGetTileFloatValue sTile "height"
+
+	;; Grab total scroll height
+	Let fScrollStart := GetMenuFloatValue "%z\user1" sTile 1011
+	Let fScrollEnd := GetMenuFloatValue "%z\user2" sTile 1011
+	Let fScrollTotal := fScrollEnd - fScrollStart
+
+	;; Grab the Y position to the scroll bar
+	Let aY := Call GMFGrabParentFloatTraits sTile "y"
+	Let iSize := ar_Size aY
+	while iIndex < iSize
+		Let fScrollY += aY[iIndex]
+		Let iIndex += 1
+	loop
+
+	;; Export values
+	Let GMF.fGameY := fScrollY + (fMarkerHeight / 2)
+	Let GMF.fSliderPos := fScrollTotal / (fScrollHeight - fMarkerHeight + 0.0001)
+	Let aY := ar_Null
+
+End

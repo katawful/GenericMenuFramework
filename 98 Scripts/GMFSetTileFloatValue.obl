@@ -1,0 +1,15 @@
+﻿scn GMFSetTileFloatValue
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Wrapper for `SetMenuFloatValue`, only for generic menus~
+;;@PARA~@string::sTile::The tile to set a value for~
+string_var sTile
+;;@PARA~@string::sTrait::The trait to set~
+string_var sTrait
+;;@PARA~@float::fValue::Value to set~
+float fValue
+
+begin function {sTile, sTrait, fValue}
+	SetMenuFloatValue "%z\%z" sTile sTrait 1011 fValue
+end

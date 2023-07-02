@@ -1,0 +1,19 @@
+﻿scn GMFOnDragInitFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This function handles the bulk of dragging, taking the scroll bar desired as an argument
+;;You want to pass the tile that *is* the scroll bar here. Everything else will be handled~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+begin function{sTile}
+
+	;; INFO:Dragging is a specific mode the menu is running in
+	;;      We need to have dragging be the first that can succeed
+	if eval GMF.bDragging
+		Call GMPFOnDragMainFunction sTile
+	elseif eval IsKeyPressed3 256 ; LMB
+		Call GMPFOnHoldLeftMouseMainFunction sTile
+	endif
+end

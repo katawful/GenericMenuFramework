@@ -1,0 +1,11 @@
+﻿scn GMFSetOnCloseHandler
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Create an `OnClose` handler with no tile ID filter~
+;;@PARA~@ref::rFunction::UDF to run when handler runs {@int::menuType}~
+ref rFunction
+
+begin function {rFunction}
+	SetMenuEventHandler "OnClose" rFunction 1011
+end

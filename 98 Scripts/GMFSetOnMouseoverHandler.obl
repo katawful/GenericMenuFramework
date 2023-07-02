@@ -1,0 +1,11 @@
+﻿scn GMFSetOnMouseoverHandler
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Create an OnMouseover handler with no tile ID filter~
+;;@PARA~@ref::rFunction::UDF to run when handler runs {@int::menuType, @string::tile, @int::id}~
+ref rFunction
+
+begin function {rFunction}
+	SetMenuEventHandler "OnMouseover" rFunction 1011
+end

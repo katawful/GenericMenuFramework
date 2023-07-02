@@ -1,0 +1,11 @@
+﻿scn GMFSetOnClickHandler
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Create an `OnClick` handler with no tile ID filter~
+;;@PARA~@ref::rFunction::UDF to run when handler runs {@int::menuType, @string::tile, @int::id}~
+ref rFunction
+
+begin function {rFunction}
+	SetMenuEventHandler "OnClick" rFunction 1011
+end

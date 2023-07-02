@@ -1,0 +1,13 @@
+﻿scn GMFSetByMenuOnOpenHandler
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Create an `OnOpen` handler with no tile ID filter, specifying menu type~
+;;@PARA~@ref::rFunction::UDF to run when handler runs {@int::menuType, @string::tile, @int::id}~
+ref rFunction
+;;@PARA~@int::iMenuType::Menu type~
+int iMenuType
+
+begin function {rFunction, iMenuType}
+	SetMenuEventHandler "OnOpen" rFunction iMenuType
+end

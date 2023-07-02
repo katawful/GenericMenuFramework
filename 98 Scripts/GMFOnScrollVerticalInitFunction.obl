@@ -1,0 +1,31 @@
+﻿scn GMFOnScrollVerticalInitFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This function handles the bulk of vertical scrolling needs. It takes the tile
+;;of scroll bar that needs to be scrolled~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+;;@PARA~@array::aIDs::IDs to use to scroll this scroll bar~
+array_var aIDs
+
+int iMatch				;@int::iMatch::The aIDs key that matches the current tile ID
+int iCurrID				;@int::iID::The current ID
+
+begin function {sTile, aIDs}
+
+	Let iCurrID := GetActiveUIComponentID
+	Let iMatch := ar_Find iCurrID aIDs
+
+	;; If there isn't a matching ID we need to exit
+	if eval iMatch == -99999.0
+		return
+	endif
+
+	;; Operate scrolling
+	if eval IsKeyPressed3 264 ; UP
+		Call GMPFOnScrollVerticalUpFunction sTile
+	elseif eval IsKeyPressed3 265 ; DOWN
+		Call GMPFOnScrollVerticalDownFunction sTile
+	endif
+end

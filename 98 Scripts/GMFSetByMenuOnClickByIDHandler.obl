@@ -1,0 +1,15 @@
+﻿scn GMFSetByMenuOnClickByIDHandler
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This sets a `OnClick` menu event handler for a specific tile ID, specifying menu type~
+;;@PARA~@ref::rFunction::UDF to run when handler runs {@int::menuType, @string::tile, @int::id}~
+ref rFunction
+;;@PARA~@int::iID::The tile ID to check against~
+int iID
+;;@PARA~@int::iMenuType::Menu type~
+int iMenuType
+
+begin function {rFunction, iID, iMenuType}
+	SetMenuEventHandler "OnClick" rFunction iMenuType iID
+end

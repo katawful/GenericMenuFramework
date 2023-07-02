@@ -1,0 +1,14 @@
+﻿scn GMFGetTileFullName
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Grab the full name of a tile~
+;;@PARA~@string::sTile::The tile to grab the name of~
+string_var sTile
+
+string_var sReturn		;@string::sReturn::Return value
+
+begin function {sTile}
+	Let sReturn := tile_GetName "%z" sTile 1011 1
+	SetFunctionValue sReturn
+end

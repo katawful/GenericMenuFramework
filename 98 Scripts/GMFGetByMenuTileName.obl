@@ -1,0 +1,16 @@
+﻿scn GMFGetByMenuTileName
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Grab the name of a tile, specifying menu type~
+;;@PARA~@string::sTile::The tile to grab the name of~
+string_var sTile
+;;@PARA~@int::iMenuType::Menu type~
+int iMenuType
+
+string_var sReturn		;@string::sReturn::Return value
+
+begin function {sTile, iMenuType}
+	Let sReturn := tile_GetName "%z" sTile iMenuType 1
+	SetFunctionValue sReturn
+end

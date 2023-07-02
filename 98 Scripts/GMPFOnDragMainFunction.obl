@@ -1,0 +1,21 @@
+﻿scn GMPFOnDragMainFunction
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Private~
+;;@DESC~This function handles both directions of dragging~
+;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
+string_var sTile
+
+string_var sCurrComponent	;@string::sCurrComponent::Used to see what the current name is for scrolling
+
+begin function {sTile}
+	Let sCurrComponent := GetActiveUIComponentName
+
+	if eval (sCurrComponent == "horizontal_scroll_marker")
+		Call GMPFOnDragHorizontalFunction sTile
+	elseif eval (sCurrComponent == "vertical_scroll_marker")
+		Call GMPFOnDragVerticalFunction sTile
+	endif
+
+	sv_Destruct sCurrComponent
+end

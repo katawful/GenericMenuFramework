@@ -1,0 +1,18 @@
+﻿scn GMFGetByMenuTileFloatValue
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~Wrapper for `SetMenuFloatValue`, specifying menu type~
+;;@PARA~@string::sTile::The tile to get a value for~
+string_var sTile
+;;@PARA~@string::sTrait::The trait to get~
+string_var sTrait
+;;@PARA~@int::iMenuType::Menu type~
+int iMenuType
+
+float fReturn		;@float::fReturn::Return value
+
+begin function {sTile, sTrait, iMenuType}
+	let fReturn := GetMenuFloatValue "%z\%z" sTile sTrait iMenuType
+	SetFunctionValue fReturn
+end
