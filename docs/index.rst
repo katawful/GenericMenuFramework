@@ -11,25 +11,36 @@ and management of generic menus in Oblivion easier. For many years, the understa
 of how to make a generic menu has been unknown to the Oblivion community, with only a few
 examples out there. With this plugin, making a new menu is the simplest it has ever been.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   Home <self>
-   test.md
+.. warning::
+   GenericMenuFramework is a work in progress. This plugin is not considered ready for
+   end development.
 
 Features
---------
+========
 
 - Clear and defined functions
 - All possible menu features supported via abstraction
 - Simplicity
 
+Requirements
+============
+
+- xOBSE v22 or later
+- MenuQue
+
 Permissions
------------
-This plugin is free to use, including commercially, with attribution
+===========
+This plugin is free to use, including commercially, with clear attribution on the description of
+your upload on a mod hosting service.
+
+.. toctree::
+   :caption: Contents
+   :maxdepth: 3
+
+   reference/index
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
