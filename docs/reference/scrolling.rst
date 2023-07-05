@@ -10,7 +10,7 @@ Scroll Bar Tile
 
 The scroll bars are generally provided by menus themselves via prefabs, for example:
 
-::
+.. code-block:: Xml
 
    <image name="scroll_bar">
 	   <include src="vertical_scroll.xml"/>
@@ -68,7 +68,7 @@ GMFOnDragInitFunction
 	   well.
 
 Private Functions
-=================
+-----------------
 
 .. warning::
    These functions are private for a reason. The documentation here is purely for posterity. These
@@ -76,7 +76,7 @@ Private Functions
    functions, please notify.
 
 GMPFOnClickHoldDragHorizontalFunction
--------------------------------------
+_____________________________________
 :Args: ``@string::sTile``, ``@string::sCurrComponent``
 :Info: When the user holds the left mouse button and is on a horizontal scroll bar, this function
 	   will get the height values of the scroll bar plus the marker and export them to the quest
@@ -84,7 +84,7 @@ GMPFOnClickHoldDragHorizontalFunction
 :Globals Exported: ``@float::fGameX``, ``@float::fSliderPos``
 
 GMPFOnClickHoldDragVerticalFunction
--------------------------------------
+_____________________________________
 :Args: ``@string::sTile``, ``@string::sCurrComponent``
 :Info: When the user holds the left mouse button and is on a vertical scroll bar, this function
 	   will get the height values of the scroll bar plus the marker and export them to the quest
@@ -92,7 +92,7 @@ GMPFOnClickHoldDragVerticalFunction
 :Globals Exported: ``@float::fGameY``, ``@float::fSliderPos``
 
 GMPFOnDragHorizontalFunction
-----------------------------
+____________________________
 :Args: ``@string::sTile``
 :Info: When the user is holding the left mouse button and is on a scroll bar marker, this function
 	   will use the cursor's X position and attempt to update the scroll bar to said position. This
@@ -100,7 +100,7 @@ GMPFOnDragHorizontalFunction
 	   scripting.
 
 GMPFOnDragHorizontalFunction
-----------------------------
+____________________________
 :Args: ``@string::sTile``
 :Info: When the user is holding the left mouse button and is on a scroll bar marker, this function
 	   will use the cursor's Y position and attempt to update the scroll bar to said position. This
@@ -108,35 +108,35 @@ GMPFOnDragHorizontalFunction
 	   scripting.
 
 GMPFOnDragMainFunction
-----------------------
+______________________
 :Args: ``@string::sTile``
 :Info: When dragging is enabled, this function controls dragging direction.
 
 GMPFOnHoldLeftMouseMainFunction
--------------------------------
+_______________________________
 :Args: ``@string::sTile``
 :Info: Starts dragging when the left mouse button is held, handles both directions.
 
 GMPFOnScrollHorizontalLeftFunction
-----------------------------------
+__________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll left command is set, this function updates the scroll bar's scroll value
 	   horizontally to the left.
 
 GMPFOnScrollHorizontalRightFunction
-----------------------------------
+__________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll right command is set, this function updates the scroll bar's scroll value
 	   horizontally to the right.
 
 GMPFOnScrollVerticalUpFunction
-----------------------------------
+__________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll up command is set, this function updates the scroll bar's scroll value
 	   vertically to the up.
 
 GMPFOnScrollVerticalDownFunction
-----------------------------------
+__________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll down command is set, this function updates the scroll bar's scroll value
 	   vertically to the down.
