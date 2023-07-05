@@ -27,3 +27,5 @@ name. This also extends to function arguments in order to maintain simplicity.
 
    value
    handlers
+   lists
+   scrolling
