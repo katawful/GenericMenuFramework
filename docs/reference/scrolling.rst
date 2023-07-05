@@ -66,3 +66,77 @@ GMFOnDragInitFunction
 	   ``sTile`` takes the scroll bar you wish to scroll. Unlike the 2, this function works on
 	   either vertical or horizontal scroll bars. This function needs to be called continuously as
 	   well.
+
+Private Functions
+=================
+
+.. warning::
+   These functions are private for a reason. The documentation here is purely for posterity. These
+   functions should not be used in any circumstance. If you find potential use in any of these
+   functions, please notify.
+
+GMPFOnClickHoldDragHorizontalFunction
+-------------------------------------
+:Args: ``@string::sTile``, ``@string::sCurrComponent``
+:Info: When the user holds the left mouse button and is on a horizontal scroll bar, this function
+	   will get the height values of the scroll bar plus the marker and export them to the quest
+	   script
+:Globals Exported: ``@float::fGameX``, ``@float::fSliderPos``
+
+GMPFOnClickHoldDragVerticalFunction
+-------------------------------------
+:Args: ``@string::sTile``, ``@string::sCurrComponent``
+:Info: When the user holds the left mouse button and is on a vertical scroll bar, this function
+	   will get the height values of the scroll bar plus the marker and export them to the quest
+	   script
+:Globals Exported: ``@float::fGameY``, ``@float::fSliderPos``
+
+GMPFOnDragHorizontalFunction
+----------------------------
+:Args: ``@string::sTile``
+:Info: When the user is holding the left mouse button and is on a scroll bar marker, this function
+	   will use the cursor's X position and attempt to update the scroll bar to said position. This
+	   function relies on the left mouse button to be held, and dragging to be enabled by the
+	   scripting.
+
+GMPFOnDragHorizontalFunction
+----------------------------
+:Args: ``@string::sTile``
+:Info: When the user is holding the left mouse button and is on a scroll bar marker, this function
+	   will use the cursor's Y position and attempt to update the scroll bar to said position. This
+	   function relies on the left mouse button to be held, and dragging to be enabled by the
+	   scripting.
+
+GMPFOnDragMainFunction
+----------------------
+:Args: ``@string::sTile``
+:Info: When dragging is enabled, this function controls dragging direction.
+
+GMPFOnHoldLeftMouseMainFunction
+-------------------------------
+:Args: ``@string::sTile``
+:Info: Starts dragging when the left mouse button is held, handles both directions.
+
+GMPFOnScrollHorizontalLeftFunction
+----------------------------------
+:Args: ``@string::sTile``
+:Info: When a scroll left command is set, this function updates the scroll bar's scroll value
+	   horizontally to the left.
+
+GMPFOnScrollHorizontalRightFunction
+----------------------------------
+:Args: ``@string::sTile``
+:Info: When a scroll right command is set, this function updates the scroll bar's scroll value
+	   horizontally to the right.
+
+GMPFOnScrollVerticalUpFunction
+----------------------------------
+:Args: ``@string::sTile``
+:Info: When a scroll up command is set, this function updates the scroll bar's scroll value
+	   vertically to the up.
+
+GMPFOnScrollVerticalDownFunction
+----------------------------------
+:Args: ``@string::sTile``
+:Info: When a scroll down command is set, this function updates the scroll bar's scroll value
+	   vertically to the down.
