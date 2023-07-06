@@ -1,3 +1,5 @@
+.. _scrollingalist:
+
 Scrolling a List
 ================
 
@@ -51,7 +53,7 @@ GMFOnScrollVerticalInitFunction
 	   This function is for a vertical scroll bar.
 
 GMFOnScrollHorizontalInitFunction
--------------------------------
+---------------------------------
 :Args: ``@string::sTile``, ``@array::aIDs``
 :Info: This function is intended to be called continuously, such as in a ``begin menumode 1011``
 	   loop in a quest script, to provide scrolling controls. ``sTile`` is the scroll bar tile, and
@@ -84,7 +86,7 @@ _____________________________________
 :Globals Exported: ``@float::fGameX``, ``@float::fSliderPos``
 
 GMPFOnClickHoldDragVerticalFunction
-_____________________________________
+___________________________________
 :Args: ``@string::sTile``, ``@string::sCurrComponent``
 :Info: When the user holds the left mouse button and is on a vertical scroll bar, this function
 	   will get the height values of the scroll bar plus the marker and export them to the quest
@@ -124,19 +126,19 @@ __________________________________
 	   horizontally to the left.
 
 GMPFOnScrollHorizontalRightFunction
-__________________________________
+___________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll right command is set, this function updates the scroll bar's scroll value
 	   horizontally to the right.
 
 GMPFOnScrollVerticalUpFunction
-__________________________________
+______________________________
 :Args: ``@string::sTile``
 :Info: When a scroll up command is set, this function updates the scroll bar's scroll value
 	   vertically to the up.
 
 GMPFOnScrollVerticalDownFunction
-__________________________________
+________________________________
 :Args: ``@string::sTile``
 :Info: When a scroll down command is set, this function updates the scroll bar's scroll value
 	   vertically to the down.

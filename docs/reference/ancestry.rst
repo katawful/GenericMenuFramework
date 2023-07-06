@@ -12,7 +12,7 @@ GMFGrabParentFloatTraits
 :Return: ``@array::aTraits``
 
 GMFGrabParentStringTraits
-------------------------
+-------------------------
 :Args: ``@string::sTile``, ``@string::sTrait``
 :Info: Walks through a tile's ancestry, grabbing each string trait ``sTrait`` and putting it into an
 	   array for return.

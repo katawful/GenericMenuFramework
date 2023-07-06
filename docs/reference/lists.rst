@@ -54,7 +54,7 @@ The traits here are all needed:
 :xdefault: Must be ``&true;``
 :xlist: A special trait that tells the engine that this tile contains a list, must be set to
 		``&xlist;``
-:xscroll: Must be set to the scroll bar tile you are using, see TODO: add link to scrolling here
+:xscroll: Must be set to the scroll bar tile you are using, see :ref:`Scrolling a List <ScrollingaList>`
 
 List Template
 _____________

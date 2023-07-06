@@ -37,6 +37,7 @@ your upload on a mod hosting service.
    :caption: Contents
    :maxdepth: 2
 
+   xml/index
    reference/index
 
 Indices and tables
