@@ -39,6 +39,7 @@ your upload on a mod hosting service.
 
    xml/index
    reference/index
+   examples/index
 
 Indices and tables
 ------------------
