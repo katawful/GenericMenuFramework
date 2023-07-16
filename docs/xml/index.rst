@@ -8,8 +8,11 @@ close to the camera, with the integer depth value only separated by 0.008 Y unit
 reason why the FOV setting in Oblivion.ini affects the UI. With sufficiently large integer depth
 values, one can see the apparent issues with this method of rendering.
 
-XML
-===
+.. _xmlreference:
+
+
+XML Reference
+=============
 
 XML (eXtensible Markup Language) is a markup language that Oblivion uses to store all the necessary
 structural information for its UI. The language is based on the same specification as HTML, the
@@ -53,6 +56,46 @@ Oblivion XML Limitations
 - All content in the file before the first ``<`` literal is ignored outright
 - Numbers and strings are poorly discriminated. Numbers are numeric if the string of characters
   contains only digits, dashes, and periods, leading to ``-.-.-.-`` to be a valid number
+
+XML Files
+---------
+
+Generally XML files are called "documents". For generic menus, the documents **must** be placed
+somewhere in ``Data\Menus\Generic``. It is recommended to place your generic menu documents inside a
+folder for your plugin name or your author name for clarity. Documents will be searched from this
+directory if not prepended with ``Data\Menus\Generic``.
+
+.. _prefabdocuments:
+
+Prefab Documents
+________________
+
+It is possible to include documents inside another document with the ``include`` trait:
+
+.. code-block:: Xml
+
+   <image name="scroll_bar"/>
+	  <include name="vertical_scroll_bar"/>
+	  ...
+
+Like generic menu documents, these must be placed inside a specific folder. For prefab documents it
+is ``Data\Menus\Prefabs``, and will search inside this directory if not prepended. You cannot
+include a file outside of this folder.
+
+An included document imports all traits to the current tile.
+
+XML Comments
+------------
+
+Comments in XML and similar languages are very different from most other languages. Since everything
+is written into tags, the comments themselves need to be written into tags:
+
+.. code-block:: Xml
+
+   <!-- This is a comment -->
+
+For posterity, the leading tag is: ``<!--`` and the closing tag is ``-->``. Comments can span as
+many lines as you want. Oblivion will ignore all comments.
 
 XML Types
 ---------
@@ -156,48 +199,45 @@ These affect the behavior of tiles, such as clicking:
 :clicksound: If this tile's ``target`` trait was true and the tile has an ``id`` trait, this will
 			 play a sound based on the numerical value set for this trait:
 
-- ``UIMenuOK``: A clicking sound overtop a low drumbeat
-- ``UIMenuCancel``: A clicking sound
-- ``UIMenuPrevNext``: A slightly higher-pitched clicking sound
-- ``UIMenuFocus``: Silent
-- ``UIMenuTabs``: Silent
-- ``ITMBookPageTurn``: 
-- ``UISpeechRollover``: A quick, high-pitched clink
-- ``UISpeechRotate``: Something rotating into place, with several quick metallic clicks as it goes
-  A longer sound. Used for the Persuade minigame
-- ``UIQuestNew``: Quick cymbals and a drumbeat. Used when a quest starts
-- ``UIQuestUpdate``: The same as ``UIQuestNew``, but with some chiming at the end. Used when a quest
-  updates
-- ``UIMessage``: A low drumbeat
-- ``MenuEnd``: 
-- ``MenuStart``: 
-- ``UIMenuBracket``: A metallic object sliding into place, with a high-pitched clink at the end
-- ``UIMessageFade``: Two high-pitched chimes
-- ``UIInventoryOpen``: Silent
-- ``UIInventoryClose``: Silent
-- ``UIPotionCreate``: A glass clink, followed by a low beat and the sound of bubbling. Used when you
-  brew a poison or potion
-- ``DRSLocked``: 
-- ``UIMessage``: 
-- ``UIMenuCancel``: 
-- ``UIStatsSkillUp``: Drums. Used when a skill increases
-- ``SPLEquip``: A quick shuffling of papers over a low drumbeat
-- ``ITMWelkyndStoneUse``: 
-- ``ITMScrollOpen``: 
-- ``ITMScrollClose``: 
-- ``ITMBookOpen``: 
-- ``ITMBookClose``: 
-- ``ITMTakeAll``: 
-- ``ITMIngredientNothing``: 
-- ``ITMIngredientDown``: 
-- ``ITMSoulTrap``: 
-- ``UIArmorWeaponRepairBreak``: The sound of a Repair Hammer breaking after being used up
-- ``ITMBoundDisappear``: 
-- ``ITMGoldUp``: The sound of coins clinking together. Good for spending or receiving gold
-- ``UIItemEnchant``: A long, louder magical sound effect
+1. ``UIMenuOK``: A clicking sound overtop a low drumbeat
+2. ``UIMenuCancel``: A clicking sound
+3. ``UIMenuPrevNext``: A slightly higher-pitched clicking sound
+4. ``UIMenuFocus``: Silent
+5. ``UIMenuTabs``: Silent
+6. ``ITMBookPageTurn``: 
+7. ``UISpeechRollover``: A quick, high-pitched clink
+8. ``UISpeechRotate``: Something rotating into place, with several quick metallic clicks as it goes. A longer sound. Used for the Persuade minigame
+9. ``UIQuestNew``: Quick cymbals and a drumbeat. Used when a quest starts
+10. ``UIQuestUpdate``: The same as ``UIQuestNew``, but with some chiming at the end. Used when a quest updates
+11. ``UIMessage``: A low drumbeat
+12. ``MenuEnd``: 
+13. ``MenuStart``: 
+14. ``UIMenuBracket``: A metallic object sliding into place, with a high-pitched clink at the end
+15. ``UIMessageFade``: Two high-pitched chimes
+16. ``UIInventoryOpen``: Silent
+17. ``UIInventoryClose``: Silent
+18. ``UIPotionCreate``: A glass clink, followed by a low beat and the sound of bubbling. Used when you brew a poison or potion
+19. ``DRSLocked``: 
+20. ``UIMessage``: 
+21. ``UIMenuCancel``: 
+22. ``UIStatsSkillUp``: Drums. Used when a skill increases
+23. ``SPLEquip``: A quick shuffling of papers over a low drumbeat
+24. ``ITMWelkyndStoneUse``: 
+25. ``ITMScrollOpen``: 
+26. ``ITMScrollClose``: 
+27. ``ITMBookOpen``: 
+28. ``ITMBookClose``: 
+29. ``ITMTakeAll``: 
+30. ``ITMIngredientNothing``: 
+31. ``ITMIngredientDown``: 
+32. ``ITMSoulTrap``: 
+33. ``UIArmorWeaponRepairBreak``: The sound of a Repair Hammer breaking after being used up
+34. ``ITMBoundDisappear``: 
+35. ``ITMGoldUp``: The sound of coins clinking together. Good for spending or receiving gold
+36. ``UIItemEnchant``: A long, louder magical sound effect
 
 :focusinset: The amount of value to shrink a focus box inward. Use on the tile you want focused
-:listindex: This is used for lists, see :ref:`List Generation <ListGeneration>`
+:listindex: This is used for lists, see :ref:`List Generation Functions <ListGeneration>`
 :mouseover: If this tile's ``target`` property is true, this will be set to 1 when the mouse hovers
 			over this tile and 0 at *any* other point of time. This is important to note when taking
 			keyboard controls in mind. This trait can interfere with keyboard controls
@@ -210,7 +250,7 @@ These affect the behavior of tiles, such as clicking:
 				  the ``mouseover`` trait
 :xdefault: Undefined behavior that seems to deal with mouse/keyboard controls. This is a Boolean and
 		   integer value, and is generally set to true
-:xlist: Determines whether a tile is contains a list or contains an item for a list. See :ref:`List Generation <ListGeneration>`
+:xlist: Determines whether a tile is contains a list or contains an item for a list. See :ref:`List Generation Functions <ListGeneration>`
 :xup: How the tile should respond to movement when it has the ``mouseover`` state
 :xdown: How the tile should respond to movement when it has the ``mouseover`` state
 :xleft: How the tile should respond to movement when it has the ``mouseover`` state
@@ -234,7 +274,7 @@ These traits are used in the direct rendering of most tiles:
 :depth3d: The same as the ``depth`` trait but using the real 3D values. One ``depth`` unit is -0.008
 		  3D units in the Y axis
 :listclip: If this trait is set to true, then this tile will not render. However, it can still
-		   receive interaction. See :ref:`List Generation <ListGeneration>`
+		   receive interaction. See :ref:`List Generation Functions <ListGeneration>`
 :locus: A boolean value, if set to true then this tile will render from the nearest ancestor who
 		also has a ``locus`` trait set to true
 :height: The height of the tile in pixels. This trait is not set automatically for ``image`` tiles,
@@ -327,8 +367,8 @@ These traits are unique to the ``text`` tile:
 :wrapwidth: The number of pixels in the X axis before text moves to the next line. All values are
 			rounded down during rendering. Below 1 is treated as no width
 
-Operators
----------
+XML Operators
+-------------
 Operators behave differently to other language due to how XML processes data. All values are stored
 in a stack, that roughly corresponds to the structure of a XML document. Therefore, there are no
 real variables and instead everything is based around the "current value" of the parsing. For
@@ -347,7 +387,7 @@ This would return 64.
 You need to put a value into the "current working value"  of the parser. That is then kept in
 memory as successive operators are applied to the current working value.
 
-copy Operator
+Copy Operator
 _____________
 
 This puts the value of this element into the current working value CWV. If the CWV is a number
@@ -435,7 +475,8 @@ _______________
 
 :or: Returns true of one or both of the current working value and argument value return true
 
-:rand: Set the current working value to a random integer between 1 and the argument value, inclusively
+:rand: Set the current working value to a random integer between 1 and the argument value,
+	   inclusively
 
 :ref: Only used for navigation
 
@@ -452,6 +493,9 @@ _______________
 		 <x> <copy src="parent()" trait="x" /> </x>
 	  </rect>
    </rect>
+
+
+.. _selectors:
 
 Selectors
 _________

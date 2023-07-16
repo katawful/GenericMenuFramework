@@ -1,7 +1,7 @@
 .. _listgeneration:
 
-List Generation
-===============
+List Generation Functions
+=========================
 
 Generic menus in Oblivion can natively render and handle lists of items. These are used in many
 areas by the vanilla game, such as the skill menu, but can be adapted to any need. This framework
@@ -15,12 +15,12 @@ complexity. The only other conventional example is LINK by Maskar.
 GMFInsertArrayList
 ------------------
 
-:Args: ``@string::sTile``, ``@array::aList``, ``@ref::rFunction``
+:Args: ``@string::sTile``, ``@string::sTemplate``, ``@array::aList``, ``@ref::rFunction``
 :Function Args: ``@string::sTile``, ``@array::aList``, ``@int::iIndex``
-:Info: Inserts the contents of ``aList`` into ``sTile``. Without ``rFunction``, this function will
-	   only create the number of elements for the list. ``rFunction`` is a user-defined function
-	   that provides the rendered information as well as any side-effects intended. See below for
-	   examples.
+:Info: Inserts the contents of ``aList`` into ``sTile`` using the template ``sTemplate``. Without
+	   ``rFunction``, this function will only create the number of elements for the list.
+	   ``rFunction`` is a user-defined function that provides the rendered information as well as
+	   any side-effects intended. See below for examples.
 
 	   Pass 0 for ``rFunction`` to not use ``rFunction``
 

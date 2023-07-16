@@ -1,5 +1,5 @@
-Ancestry Manipulation
-=====================
+Ancestry Functions
+==================
 
 It can be useful to walk through a tile's ancestry. While there is no native way to do this with
 xOBSE or MenuQue, GenericMenuFramework provides this functionality

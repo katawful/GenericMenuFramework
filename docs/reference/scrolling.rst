@@ -1,11 +1,11 @@
 .. _scrollingalist:
 
-Scrolling a List
-================
+Scrolling Functions
+===================
 
 While scrolling a list is one of the more complex features of menus, this framework makes this very
-simple. Assuming you followed the advice in :ref:`List Generation <ListGeneration>`, for the list
-itself adding scrolling to a menu becomes very simple.
+simple. Assuming you followed the advice in :ref:`List Generation Functions <ListGeneration>`, for
+the list itself adding scrolling to a menu becomes very simple.
 
 Scroll Bar Tile
 ---------------
