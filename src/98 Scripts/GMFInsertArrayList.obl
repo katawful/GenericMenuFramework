@@ -6,6 +6,8 @@
 ;;list, and inserts it~
 ;;@PARA~@string::sTile::The tile to insert an list into~
 string_var sTile
+;;@PARA~@string::sTemplate::The template to insert~
+string_var sTemplate
 ;;@PARA~@array::aList::An indexed array that you wish to insert into the menu~
 array_var aList
 ;;@PARA~@ref::rFunction::A function to apply to each index being processed
@@ -17,7 +19,7 @@ int iIndex			;@int::iIndex::Index for the array
 int iListSize		;@int::iListSize::Size of array
 string_var sListTile
 
-begin function {sTile, aList, rFunction}
+begin function {sTile, sTemplate, aList, rFunction}
 	;; Grab the basic array information to loop over
 	Let iListSize := ar_Size aList
 
@@ -27,7 +29,7 @@ begin function {sTile, aList, rFunction}
 		;;       This should go into the rect you desire for the list, not the rect
 		;;       you want for appearances. Tiles are free to render, add as many as
 		;;       you need.
-		InsertXMLTemplate "%z|list_template|%.0f" sTile iIndex 1011
+		InsertXMLTemplate "%z|%z|%.0f" sTile sTemplate iIndex 1011
 
 		;; Set the listindex for each item
 		let sListTile := sTile + "\" + $iIndex
