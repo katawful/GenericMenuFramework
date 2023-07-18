@@ -1,0 +1,259 @@
+<!-- birthsign.xml -->
+<menu name="BirthsignRemake">
+    <class> &GenericMenu; </class> <!-- `class` needs to be 'GenericMenu' -->
+    <stackingtype> &no_click_past; </stackingtype> <!-- WARN: undocumented, leave -->
+    <locus> &true; </locus>
+    <explorefade> 0.25 </explorefade>
+
+    <rect name="bmr_background">
+        <include src="generic_background.xml" />
+        <visible> &true; </visible>
+        <id> 100 </id>
+        <depth> 0 </depth>
+        <locus> &true; </locus>
+        <target> &true; </target>
+        <user0> <!-- menu width excluding borders -->
+            <copy> 0 </copy>
+            <add src="bmr_background_image" trait="width" />
+            <add src="bmr_info_box" trait="width" />
+            <add> 10 </add>
+        </user0>
+        <user1> <!-- menu height excluding borders -->
+            <copy> 0 </copy>
+            <add src="bmr_background_image" trait="height" />
+            <add> 10 </add>
+        </user1>
+        <x>
+            <copy src="screen()" trait="width" />
+            <sub src="me()" trait="width" />
+            <div> 2 </div>
+        </x>
+        <y>
+            <copy src="screen()" trait="height" />
+            <sub src="me()" trait="height" />
+            <div> 2 </div>
+        </y>
+
+        <image name="bmr_background_image">
+            <target> &true; </target>
+            <locus> &true; </locus>
+            <filename> Menus\Birthsign\Birthsign_The Warrior.dds </filename>
+            <id> 110 </id>
+            <depth> 3 </depth>
+            <zoom> &scale; </zoom>
+            <height> 256 </height>
+            <width> 256 </width>
+            <x> 0 </x>
+            <y> 60 </y>
+        </image>
+
+        <text name="bmr_class_name">
+            <id> 111 </id>
+            <string> Current class: The Warrior </string>
+            <depth> 3 </depth>
+            <font> 3 </font>
+            <red> 0 </red>
+            <green> 0 </green>
+            <blue> 0 </blue>
+            <alpha> 200 </alpha>
+            <visible> &true; </visible>
+            <locus> &false; </locus>
+        </text>
+
+        <image name="bmr_class_return_button">
+            <include src="button_long.xml" />
+            <depth> 3 </depth>
+            <id> 112 </id>
+            <x> 50 </x>
+            <y> 25 </y>
+            <clicksound> 2 </clicksound>
+            <user0> <copy src="strings()" trait="_return"/> </user0>
+            <user2> 3 </user2>
+        </image>
+
+        <rect name="bmr_info_box" >
+            <target> &true; </target>
+            <height>
+                <copy src="bmr_background" trait="height" />
+            </height>
+            <width>
+                <copy src="bmr_background_image" trait="width" />
+            </width>
+            <x>
+                <copy src="bmr_background_image" trait="width" />
+            </x>
+            <y> 0 </y>
+
+            <text name="bmr_title" >
+                <id> 121 </id>
+                <visible> &true; </visible>
+                <string> Choose your birthsign </string>
+                <depth> 3 </depth>
+                <font> 3 </font>
+                <red> 0 </red>
+                <green> 0 </green>
+                <blue> 0 </blue>
+                <alpha> 200 </alpha>
+                <visible> &true; </visible>
+                <locus> &true; </locus>
+                <target> &false; </target>
+                <wrapwidth> <copy src="parent()" trait="width" /> </wrapwidth>
+                <x>
+                    <copy src="parent()" trait="x" />
+                    <add> 5 </add>
+                </x>
+                <y> 0 </y>
+            </text>
+
+            <image name="bmr_scroll_bar">
+                <include src="vertical_scroll.xml"/>
+                <target> &true; </target>
+                <depth> 4 </depth>
+                <id> 122 </id>
+                <x>
+                    <copy src="bmr_info_box" trait="x" />
+                    <add src="bmr_info_box" trait="width" />
+                    <sub> 10 </sub>
+                </x>
+                <y>
+                    36
+                </y>
+                <height>
+                    <copy src="bmr_info_box" trait="height" />
+                    <sub> 61 </sub>
+                </height>
+                <user1> 0 </user1> <!-- code set - minimum range value -->
+                <user2>
+                    <copy src="bmr_info_list_box" trait="child_count" />
+                    <sub src="me()" trait="user8" /> <!-- remove the viewable items -->
+                    <add> 2 </add>
+                </user2> <!-- maximum range value -->
+                <user3> 1 </user3> <!-- arrow step distance -->
+                <user4> 6 </user4> <!-- bar jump distance -->
+                <user5> 0 </user5> <!-- scroll bar position - set to 0 here -->
+                <user6> 33 </user6> <!-- marker's id - must change to enable dragging -->
+                <!-- user7 --> <!-- current value -->
+                <user8> 8 </user8> <!-- number of items visible -->
+            </image>
+
+            <rect name="bmr_info_list_box">
+                <id> 123 </id>
+                <depth> 5 </depth>
+                <alpha> 0 </alpha>
+                <locus> &false; </locus>
+                <x>
+                    <copy src="bmr_background_image" trait="width" />
+                </x>
+                <height>
+                    240
+                </height>
+                <y>
+                    <copy> 0 </copy>
+                    <add>
+                        <copy src="bmr_title" trait="height" />
+                    </add>
+                </y>
+                <target> &false; </target> <!-- the rect isn't what's targeted -->
+                <xdefault> &true; </xdefault> <!-- Engine value, unknown -->
+                <xlist> &xlist; </xlist> <!-- This tells the game that this rect holds the list -->
+                <xscroll> <ref src="bmr_scroll_bar" trait="user5" /> </xscroll>
+            </rect>
+        </rect>
+    </rect>
+
+    <template name="bmr_list_template">
+        <rect name="bmr_list_item">
+            <depth> 6 </depth>
+            <id> 200 </id>
+            <target> &true; </target> <!-- should be set true so you can scroll -->
+            <repeatvertical> &true; </repeatvertical> <!-- needed for scrolling -->
+            <alpha> 0 </alpha>
+            <width> 600 </width>
+            <height> 36 </height>
+            <clips> &true; </clips> <!-- needed to disappear behind other tiles -->
+            <locus> &true; </locus>
+            <x>
+                <copy src="bmr_background_image" trait="width" />
+            </x>
+            <y>
+                <copy> 36 </copy>
+                <mul>
+                    <copy src="me()" trait="listindex" />
+                    <sub src="bmr_scroll_bar" trait="user7" />
+                </mul>
+                <add> 36 </add>
+            </y>
+            <listclip>
+                <copy src="me()" trait="listindex"/>
+                <gte>
+                    <copy src="bmr_scroll_bar" trait="user7"/>
+                    <add src="bmr_scroll_bar" trait="user8"/>
+                    <sub> 2 </sub>
+                </gte>
+                <or>
+                    <copy src="me()" trait="listindex"/>
+                    <lt src="bmr_scroll_bar" trait="user7"/>
+                </or>
+            </listclip>
+            <clicksound> 1 </clicksound>
+            <listindex> 0 </listindex> <!-- the current index for the item, set to 0 here -->
+            <user1> </user1> <!-- list text -->
+            <user2> nil </user2> <!--sign hex value -->
+            <xdefault> &false; </xdefault> <!-- Engine value, unknown but must be set -->
+            <xlist> &xitem; </xlist> <!-- this is the item of the list, must be set -->
+            <xup> &prev; </xup>
+            <xdown> &next; </xdown>
+
+            <xscroll>
+                <copy src="me()" trait="listindex" />
+                <sub>
+                    <copy src="bmr_scroll_bar" trait="user8"/>
+                    <div> 2 </div>
+                    <ceil> 0 </ceil>
+                </sub>
+                <add> 1 </add>
+            </xscroll>
+
+            <rect name="data">
+                <_signhex> nil </_signhex>
+            </rect>
+
+            <text name="bmr_list_name" >
+                <depth> 8 </depth>
+                <string> <copy src="parent()" trait="user1" /> </string>
+                <justify> &left; </justify>
+                <font> 3 </font>
+                <red> 0 </red>
+                <green> 0 </green>
+                <blue> 0 </blue>
+                <alpha> 200 </alpha>
+                <wrapwidth> 475 </wrapwidth>
+                <wraplines> 1 </wraplines>
+                <clips> &true; </clips>
+                <x> 5 </x>
+                <y>
+                    <copy> 16 </copy>
+                    <sub>
+                        <copy src="me()" trait="height" />
+                        <div> 2 </div>
+                    </sub>
+                </y>
+            </text>
+
+            <rect name="bmr_list_focus">
+                <include src="darn\focus_box.xml"/>
+                <depth> 7 </depth>
+                <visible>
+                    <copy src="parent()" trait="mouseover" />
+                    <eq> 1 </eq>
+                </visible>
+                <y> 5 </y>
+                <width>
+                    <copy src="bmr_list_name" trait="width" />
+                    <add> 15 </add>
+                </width>
+                <height> 22 </height>
+            </rect>
+        </rect>
+    </template>
+</menu>

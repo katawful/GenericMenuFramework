@@ -1,0 +1,24 @@
+﻿scn BMRScript
+
+;;@TYPE~Quest Script~
+;;@OBJT~BMR~
+;;@DESC~Handles interaction and array loading~
+
+float fQuestDelayTime			;@float::fQuestDelayTime::How often this script runs
+
+string_var sActiveTile			;@string::sActiveTile::The active tile partial name
+array_var aIDs					;@array::aIDs::IDs to pass to interaction so that only said IDs affect them
+
+Begin MenuMode 1011
+	Let fQuestDelayTime := 0.001
+	Let sActiveTile := GetActiveUIComponentName
+	if eval sv_Compare "bmr_background" sActiveTile > -2
+		;; DRAGGING -- takes tile to be dragged
+		Call GMFOnDragInitFunction "bmr_background\bmr_info_box\bmr_scroll_bar"
+		;; SCROLLING -- takes tile to be dragged, as well as array of IDs
+		Call GMFOnScrollVerticalInitFunction "bmr_background\bmr_info_box\bmr_scroll_bar" aIDs
+	endif
+
+	;; WARN: Remember to destruct your strings
+	sv_Destruct sActiveTile
+End

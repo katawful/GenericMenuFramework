@@ -1,0 +1,11 @@
+﻿scn BMRMouseoverTest
+
+int menutype
+string_var tile
+int id
+
+begin function {menutype, tile, id}
+	print "menutype: " + $menutype
+	print "tile: " + tile
+	print "id: " + $id
+end

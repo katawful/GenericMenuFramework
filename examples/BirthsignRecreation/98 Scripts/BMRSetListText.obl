@@ -1,0 +1,30 @@
+﻿scn BMRSetListText
+
+;;@TYPE~User-Defined Function~
+;;@DESC~This function is used to modify the actual contents of the list for display
+;;We want to display birthsign name~
+;;@PARA~@string::sTile::Tile to insert list into~
+string_var sTile
+;;@PARA~@array::aList::List items being inserted~
+array_var aList
+;;@PARA~@int::iIndex::The current listindex~
+int iIndex
+
+string_var sText			;@string::sText::Text to set list item to
+string_var sTrueTile		;@string::sTrueTile::The true tile name we want to set
+ref rTempRef				;@ref::rTempRef::Current reference
+
+begin function {sTile, aList, iIndex}
+
+	;; Normalize list index tile name
+	Let sTrueTile := sTile + "\" + $iIndex
+
+	;; Store reference to list item in hex format
+	Let rTempRef := aList[iIndex]
+	Let sText := GetRawFormIDString rTempRef
+	Call GMFSetTileStringValue (sTrueTile + "\" + "data") "_signhex" sText
+
+	;; Render name of reference
+	Let sText := GetName rTempRef
+	Call GMFSetTileStringValue sTrueTile "user1" sText
+end

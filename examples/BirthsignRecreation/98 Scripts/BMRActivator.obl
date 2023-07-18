@@ -1,0 +1,9 @@
+﻿scn BMRActivator
+
+;;@TYPE~Object Script~
+;;@OBJT~BMRMenuButton~
+;;@DESC~Creates menu when activated~
+
+Begin OnActivate
+	Call BMRFunction
+End

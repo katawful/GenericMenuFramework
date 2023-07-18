@@ -1,0 +1,55 @@
+﻿scn BMRFunction
+
+;;@TYPE~User-Defined Function~
+;;@DESC~Called from an activator, this function simply creates a generic menu~
+
+ref rBirthsign			;@ref::rBirthsign::Birthsign to print to menu
+string_var sBirthsign	;@string::sBirthsign::Name of birthsign
+array_var aBirthsigns	;@array::aBirthsigns::Array of all birthsigns in the game
+
+ref rFunction			;@ref::rFunction::A UDF to pass to modify the contents of a list
+
+Begin Function{}
+	;; Add IDs to passing array
+	Let BMR.aIDs := ar_Construct array
+	ar_Append BMR.aIDs 33		;vertical_scroll_marker
+	ar_Append BMR.aIDs 100		;bmr_background
+	ar_Append BMR.aIDs 120		;bmr_info_box
+	ar_Append BMR.aIDs 122		;bmr_scroll_bar
+	ar_Append BMR.aIDs 123		;bmr_info_list_box
+	ar_Append BMR.aIDs 200		;bmr_list_item
+
+
+	;; Set up birthsign information
+	Let rBirthsign := GetPlayerBirthsign
+	Let sBirthsign := GetName rBirthsign
+	let aBirthsigns := ar_Construct array
+	ar_Append aBirthsigns BirthSignApprentice
+	ar_Append aBirthsigns BirthSignAtronach
+	ar_Append aBirthsigns BirthSignLord
+	ar_Append aBirthsigns BirthSignLover
+	ar_Append aBirthsigns BirthSignMage
+	ar_Append aBirthsigns BirthSignRitual
+	ar_Append aBirthsigns BirthSignSerpent
+	ar_Append aBirthsigns BirthSignShadow
+	ar_Append aBirthsigns BirthSignSteed
+	ar_Append aBirthsigns BirthSignThief
+	ar_Append aBirthsigns BirthSignTower
+	ar_Append aBirthsigns BirthSignWarrior
+
+	;; Create menu using GMF
+	Call GMFShowMenu "kat\birthsignremake.xml" 112
+	Call GMFSetTileStringValue "bmr_background\bmr_class_name" "string" ("Current class: " + sBirthsign)
+	Call GMFSetTileStringValue "bmr_background\bmr_background_image" "filename" ("Menus\Birthsign\Birthsign_" + sBirthsign + ".dds")
+
+	;; INFO: POPULATE LIST
+	;;       We need to pass a side-effect inducing function to actually modify the contents of list
+	;;       This side-effect inducing function takes: tile-string, arrays-to-list, and function-as-ref-var
+	Let rFunction := BMRSetListText
+	Call GMFInsertArrayList "bmr_background\bmr_info_box\bmr_info_list_box" "bmr_list_template" aBirthsigns rFunction
+	let rFunction := BMRHandlerFunction
+	call GMFSetOnClickByIDHandler rFunction 200
+
+	;; WARN: Remember to destruct strings
+	sv_Destruct sBirthsign
+End

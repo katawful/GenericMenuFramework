@@ -1,0 +1,29 @@
+﻿scn BMRHandlerFunction
+
+;;@TYPE~User-Defined Function~
+;;@DESC~Called when 'OnClick' is done on a list item ID~
+;;@PARA~@int::iMenuType::Menu type~
+int iMenuType
+;;@PARA~@string::sTile::Clicked menu tile~
+string_var sTile
+;;@PARA~@int::iID::ID of tile being clicked~
+int iID
+
+string_var hBirthsign		;@hex::hBirthsign::Hex of birthsign
+ref rBirthsign				;@ref::rBirthsign::Reference of birthsign
+string_var sBirthsign		;@string::sBirthsign::Name of birthsign
+
+begin function {iMenuType, sTile, iID}
+
+	;; Grab stored hex, trim, get form from hex value, and return reference
+	let hBirthsign := Call GMFGetTileStringValue (sTile + "\data\") "_signhex"
+	let hBirthsign := hBirthsign[2:-1]
+	let rBirthsign := GetFormFromMod "Oblivion.esm" $hBirthsign
+
+	;; Set current player class, class image, and class name
+	SetPlayerBirthSign rBirthsign
+	let sBirthsign := GetName rBirthsign
+	call GMFSetTileStringValue "bmr_background\bmr_class_name" "string" ("Current class: " + sBirthsign)
+	call GMFSetTileStringValue "bmr_background\bmr_background_image" "filename" ("Menus\Birthsign\Birthsign_" + sBirthsign + ".dds")
+	
+end
