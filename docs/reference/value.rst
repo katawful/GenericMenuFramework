@@ -22,13 +22,13 @@ _____________________
 :Info: Set the string value of a trait for some tile, wrapper for ``GetMenuStringValue`` from xOBSE
 
 GMFSetByMenuTileStringValue
-_____________________
+___________________________
 :Args: ``@string::sTile``, ``@string::sTrait``, ``@string::sValue``, ``@int::iMenuType``
 :Info: Set the string value of a trait for some tile and menu type, wrapper for
 	   ``GetMenuStringValue`` from xOBSE
 
 GMFSetByMenuTileFloatValue
-_____________________
+__________________________
 :Args: ``@string::sTile``, ``@string::sTrait``, ``@float::FValue``, ``@int::iMenuType``
 :Info: Set the float value of a trait for some tile and menu type, wrapper for
 	   ``GetMenuStringValue`` from xOBSE
