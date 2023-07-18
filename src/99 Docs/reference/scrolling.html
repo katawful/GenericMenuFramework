@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrolling Functions &mdash; GenericMenuFramework 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ancestry Functions" href="ancestry.html" />
+    <link rel="prev" title="List Generation Functions" href="lists.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenericMenuFramework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../xml/index.html">UI Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xml/index.html#xml-reference">XML Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GenericMenuFramework Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="value.html">Value Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handlers.html">Event Handler Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html">List Generation Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scrolling Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scroll-bar-tile">Scroll Bar Tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gmfonscrollverticalinitfunction">GMFOnScrollVerticalInitFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gmfonscrollhorizontalinitfunction">GMFOnScrollHorizontalInitFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gmfondraginitfunction">GMFOnDragInitFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#private-functions">Private Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonclickholddraghorizontalfunction">GMPFOnClickHoldDragHorizontalFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonclickholddragverticalfunction">GMPFOnClickHoldDragVerticalFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfondraghorizontalfunction">GMPFOnDragHorizontalFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GMPFOnDragHorizontalFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfondragmainfunction">GMPFOnDragMainFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonholdleftmousemainfunction">GMPFOnHoldLeftMouseMainFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonscrollhorizontalleftfunction">GMPFOnScrollHorizontalLeftFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonscrollhorizontalrightfunction">GMPFOnScrollHorizontalRightFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonscrollverticalupfunction">GMPFOnScrollVerticalUpFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmpfonscrollverticaldownfunction">GMPFOnScrollVerticalDownFunction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ancestry.html">Ancestry Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Generic Menus</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenericMenuFramework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">GenericMenuFramework Reference</a></li>
+      <li class="breadcrumb-item active">Scrolling Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/scrolling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scrolling-functions">
+<span id="scrollingalist"></span><h1>Scrolling Functions<a class="headerlink" href="#scrolling-functions" title="Permalink to this heading"></a></h1>
+<p>While scrolling a list is one of the more complex features of menus, this framework makes this very
+simple. Assuming you followed the advice in <a class="reference internal" href="lists.html#listgeneration"><span class="std std-ref">List Generation Functions</span></a>, for
+the list itself adding scrolling to a menu becomes very simple.</p>
+<section id="scroll-bar-tile">
+<h2>Scroll Bar Tile<a class="headerlink" href="#scroll-bar-tile" title="Permalink to this heading"></a></h2>
+<p>The scroll bars are generally provided by menus themselves via prefabs, for example:</p>
+<div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;scroll_bar&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;vertical_scroll.xml&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;depth&gt;</span><span class="w"> </span>4<span class="w"> </span><span class="nt">&lt;/depth&gt;</span>
+<span class="w">        </span><span class="nt">&lt;id&gt;</span><span class="w"> </span>112<span class="w"> </span><span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user1&gt;</span><span class="w"> </span>0<span class="w"> </span><span class="nt">&lt;/user1&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user2&gt;</span>
+<span class="w">                </span><span class="nt">&lt;copy</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;list_rect&quot;</span><span class="w"> </span><span class="na">trait=</span><span class="s">&quot;child_count&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;sub</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;me()&quot;</span><span class="w"> </span><span class="na">trait=</span><span class="s">&quot;user8&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;add&gt;</span><span class="w"> </span>2<span class="w"> </span><span class="nt">&lt;/add&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/user2&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user3&gt;</span><span class="w"> </span>1<span class="w"> </span><span class="nt">&lt;/user3&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user4&gt;</span><span class="w"> </span>6<span class="w"> </span><span class="nt">&lt;/user4&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user5&gt;</span><span class="w"> </span>0<span class="w"> </span><span class="nt">&lt;/user5&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user6&gt;</span><span class="w"> </span>33<span class="w"> </span><span class="nt">&lt;/user6&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user8&gt;</span><span class="w"> </span>8<span class="w"> </span><span class="nt">&lt;/user8&gt;</span>
+<span class="nt">&lt;/image&gt;</span>
+</pre></div>
+</div>
+<p>The user traits are integral to operating a scroll bar:</p>
+<dl class="field-list simple">
+<dt class="field-odd">user1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Minimum amount of items to view</p>
+</dd>
+<dt class="field-even">user2<span class="colon">:</span></dt>
+<dd class="field-even"><p>Maximum scroll amount. This trait should be set to the child count of the list <code class="docutils literal notranslate"><span class="pre">rect</span></code>.
+It’s pretty important to be specific with your own menu</p>
+</dd>
+<dt class="field-odd">user3<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Amount scroll bar moves when arrow of scroll bar is clicked</p>
+</dd>
+<dt class="field-even">user4<span class="colon">:</span></dt>
+<dd class="field-even"><p>Amount scroll bar moves when bar of scroll bar is clicked</p>
+</dd>
+<dt class="field-odd">user5<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The scroll bar’s writable current position</p>
+</dd>
+<dt class="field-even">user6<span class="colon">:</span></dt>
+<dd class="field-even"><p>The ID of the scroll bar’s marker</p>
+</dd>
+<dt class="field-odd">user7<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The scroll bar’s readable current position</p>
+</dd>
+<dt class="field-even">user8<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of items visible</p>
+</dd>
+</dl>
+</section>
+<section id="gmfonscrollverticalinitfunction">
+<h2>GMFOnScrollVerticalInitFunction<a class="headerlink" href="#gmfonscrollverticalinitfunction" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aIDs</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>This function is intended to be called continuously, such as in a <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">menumode</span> <span class="pre">1011</span></code>
+loop in a quest script, to provide scrolling controls. <code class="docutils literal notranslate"><span class="pre">sTile</span></code> is the scroll bar tile, and
+<code class="docutils literal notranslate"><span class="pre">aIDs</span></code> is an array of numeric IDs that you wish this scrolling to affect.</p>
+<p>This function is for a vertical scroll bar.</p>
+</dd>
+</dl>
+</section>
+<section id="gmfonscrollhorizontalinitfunction">
+<h2>GMFOnScrollHorizontalInitFunction<a class="headerlink" href="#gmfonscrollhorizontalinitfunction" title="Permalink to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aIDs</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>This function is intended to be called continuously, such as in a <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">menumode</span> <span class="pre">1011</span></code>
+loop in a quest script, to provide scrolling controls. <code class="docutils literal notranslate"><span class="pre">sTile</span></code> is the scroll bar tile, and
+<code class="docutils literal notranslate"><span class="pre">aIDs</span></code> is an array of numeric IDs that you wish this scrolling to affect.</p>
+<p>This function is for a horizontal scroll bar.</p>
+</dd>
+</dl>
+</section>
+<section id="gmfondraginitfunction">
+<h2>GMFOnDragInitFunction<a class="headerlink" href="#gmfondraginitfunction" title="Permalink to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>This function initializes mouse dragging of a scroll bar. Like the two scroll functions,
+<code class="docutils literal notranslate"><span class="pre">sTile</span></code> takes the scroll bar you wish to scroll. Unlike the 2, this function works on
+either vertical or horizontal scroll bars. This function needs to be called continuously as
+well.</p>
+</dd>
+</dl>
+</section>
+<section id="private-functions">
+<h2>Private Functions<a class="headerlink" href="#private-functions" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These functions are private for a reason. The documentation here is purely for posterity. These
+functions should not be used in any circumstance. If you find potential use in any of these
+functions, please notify.</p>
+</div>
+<section id="gmpfonclickholddraghorizontalfunction">
+<h3>GMPFOnClickHoldDragHorizontalFunction<a class="headerlink" href="#gmpfonclickholddraghorizontalfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sCurrComponent</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When the user holds the left mouse button and is on a horizontal scroll bar, this function
+will get the height values of the scroll bar plus the marker and export them to the quest
+script</p>
+</dd>
+<dt class="field-odd">Globals Exported<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;float::fGameX</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;float::fSliderPos</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonclickholddragverticalfunction">
+<h3>GMPFOnClickHoldDragVerticalFunction<a class="headerlink" href="#gmpfonclickholddragverticalfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sCurrComponent</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When the user holds the left mouse button and is on a vertical scroll bar, this function
+will get the height values of the scroll bar plus the marker and export them to the quest
+script</p>
+</dd>
+<dt class="field-odd">Globals Exported<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;float::fGameY</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;float::fSliderPos</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="gmpfondraghorizontalfunction">
+<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#gmpfondraghorizontalfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When the user is holding the left mouse button and is on a scroll bar marker, this function
+will use the cursor’s X position and attempt to update the scroll bar to said position. This
+function relies on the left mouse button to be held, and dragging to be enabled by the
+scripting.</p>
+</dd>
+</dl>
+</section>
+<section id="id1">
+<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When the user is holding the left mouse button and is on a scroll bar marker, this function
+will use the cursor’s Y position and attempt to update the scroll bar to said position. This
+function relies on the left mouse button to be held, and dragging to be enabled by the
+scripting.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfondragmainfunction">
+<h3>GMPFOnDragMainFunction<a class="headerlink" href="#gmpfondragmainfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When dragging is enabled, this function controls dragging direction.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonholdleftmousemainfunction">
+<h3>GMPFOnHoldLeftMouseMainFunction<a class="headerlink" href="#gmpfonholdleftmousemainfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>Starts dragging when the left mouse button is held, handles both directions.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonscrollhorizontalleftfunction">
+<h3>GMPFOnScrollHorizontalLeftFunction<a class="headerlink" href="#gmpfonscrollhorizontalleftfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When a scroll left command is set, this function updates the scroll bar’s scroll value
+horizontally to the left.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonscrollhorizontalrightfunction">
+<h3>GMPFOnScrollHorizontalRightFunction<a class="headerlink" href="#gmpfonscrollhorizontalrightfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When a scroll right command is set, this function updates the scroll bar’s scroll value
+horizontally to the right.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonscrollverticalupfunction">
+<h3>GMPFOnScrollVerticalUpFunction<a class="headerlink" href="#gmpfonscrollverticalupfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When a scroll up command is set, this function updates the scroll bar’s scroll value
+vertically to the up.</p>
+</dd>
+</dl>
+</section>
+<section id="gmpfonscrollverticaldownfunction">
+<h3>GMPFOnScrollVerticalDownFunction<a class="headerlink" href="#gmpfonscrollverticaldownfunction" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+</dd>
+<dt class="field-even">Info<span class="colon">:</span></dt>
+<dd class="field-even"><p>When a scroll down command is set, this function updates the scroll bar’s scroll value
+vertically to the down.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lists.html" class="btn btn-neutral float-left" title="List Generation Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ancestry.html" class="btn btn-neutral float-right" title="Ancestry Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Kat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

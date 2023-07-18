@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Handler Functions &mdash; GenericMenuFramework 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="List Generation Functions" href="lists.html" />
+    <link rel="prev" title="Value Functions" href="value.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GenericMenuFramework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../xml/index.html">UI Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xml/index.html#xml-reference">XML Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">GenericMenuFramework Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="value.html">Value Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Event Handler Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generic-menu-handlers">Generic Menu Handlers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonclickhandler">GMFSetOnClickHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonopenhandler">GMFSetOnOpenHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonclosehandler">GMFSetOnCloseHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonmouseoverhandler">GMFSetOnMouseoverHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#generic-menu-handlers-with-id">Generic Menu Handlers with ID</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonclickbyidhandler">GMFSetOnClickByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonopenbyidhandler">GMFSetOnOpenByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonclosebyidhandler">GMFSetOnCloseByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetonmouseoverbyidhandler">GMFSetOnMouseoverByIdHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#any-menu-handlers">Any Menu Handlers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonclickhandler">GMFSetByMenuOnClickHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonopenhandler">GMFSetByMenuOnOpenHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonclosehandler">GMFSetByMenuOnCloseHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonmouseoverhandler">GMFSetByMenuOnMouseoverHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#any-menu-handlers-with-id">Any Menu Handlers with ID</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonclickbyidhandler">GMFSetByMenuOnClickByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonopenbyidhandler">GMFSetByMenuOnOpenByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonclosebyidhandler">GMFSetByMenuOnCloseByIdHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gmfsetbymenuonmouseoverbyidhandler">GMFSetByMenuOnMouseoverByIdHandler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lists.html">List Generation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrolling.html">Scrolling Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ancestry.html">Ancestry Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Example Generic Menus</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GenericMenuFramework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">GenericMenuFramework Reference</a></li>
+      <li class="breadcrumb-item active">Event Handler Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/handlers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="event-handler-functions">
+<h1>Event Handler Functions<a class="headerlink" href="#event-handler-functions" title="Permalink to this heading"></a></h1>
+<p>Event handlers are functions that only run when a certain game event runs. They are useful when one
+wants to handle many different states at once. All event handler functions in this framework are
+wrappers around MenuQue event handlers.</p>
+<section id="generic-menu-handlers">
+<h2>Generic Menu Handlers<a class="headerlink" href="#generic-menu-handlers" title="Permalink to this heading"></a></h2>
+<p>These functions are handlers for generic menus and for any tile ID.</p>
+<section id="gmfsetonclickhandler">
+<h3>GMFSetOnClickHandler<a class="headerlink" href="#gmfsetonclickhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On left click of mouse, for any tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonopenhandler">
+<h3>GMFSetOnOpenHandler<a class="headerlink" href="#gmfsetonopenhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On open of a generic menu, for any tile ID. Note that this function will run before
+most of the menu is done rendering</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonclosehandler">
+<h3>GMFSetOnCloseHandler<a class="headerlink" href="#gmfsetonclosehandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On close of a generic menu, for any tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonmouseoverhandler">
+<h3>GMFSetOnMouseoverHandler<a class="headerlink" href="#gmfsetonmouseoverhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On mouseover of a tile, for any tile ID</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="generic-menu-handlers-with-id">
+<h2>Generic Menu Handlers with ID<a class="headerlink" href="#generic-menu-handlers-with-id" title="Permalink to this heading"></a></h2>
+<p>These functions are handlers for generic menus with specified tile IDs.</p>
+<section id="gmfsetonclickbyidhandler">
+<h3>GMFSetOnClickByIdHandler<a class="headerlink" href="#gmfsetonclickbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On left click of mouse, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonopenbyidhandler">
+<h3>GMFSetOnOpenByIdHandler<a class="headerlink" href="#gmfsetonopenbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On open of a generic menu, for a specific tile ID. Note that this function will run
+before most of the menu is done rendering</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonclosebyidhandler">
+<h3>GMFSetOnCloseByIdHandler<a class="headerlink" href="#gmfsetonclosebyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On close of a generic menu, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetonmouseoverbyidhandler">
+<h3>GMFSetOnMouseoverByIdHandler<a class="headerlink" href="#gmfsetonmouseoverbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code> , <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On mouseover of a tile, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="any-menu-handlers">
+<h2>Any Menu Handlers<a class="headerlink" href="#any-menu-handlers" title="Permalink to this heading"></a></h2>
+<p>These functions are handlers for any menu type and for any tile ID.</p>
+<section id="gmfsetbymenuonclickhandler">
+<h3>GMFSetByMenuOnClickHandler<a class="headerlink" href="#gmfsetbymenuonclickhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On left click of mouse on a tile in a specific menu type, for any tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonopenhandler">
+<h3>GMFSetByMenuOnOpenHandler<a class="headerlink" href="#gmfsetbymenuonopenhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On open of a specific menu type, for any tile ID. Note that this function will run
+before most of the menu is done rendering</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonclosehandler">
+<h3>GMFSetByMenuOnCloseHandler<a class="headerlink" href="#gmfsetbymenuonclosehandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On close of a specific menu type, for any tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonmouseoverhandler">
+<h3>GMFSetByMenuOnMouseoverHandler<a class="headerlink" href="#gmfsetbymenuonmouseoverhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On mouseover of a tile in a specific menu type, for any tile ID</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="any-menu-handlers-with-id">
+<h2>Any Menu Handlers with ID<a class="headerlink" href="#any-menu-handlers-with-id" title="Permalink to this heading"></a></h2>
+<p>These functions are handlers for any menu type with specified tile IDs.</p>
+<section id="gmfsetbymenuonclickbyidhandler">
+<h3>GMFSetByMenuOnClickByIdHandler<a class="headerlink" href="#gmfsetbymenuonclickbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On left click of mouse on a tile in a specific menu type, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonopenbyidhandler">
+<h3>GMFSetByMenuOnOpenByIdHandler<a class="headerlink" href="#gmfsetbymenuonopenbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On open of a specific menu type, for a specific tile ID. Note that this function will
+run before most of the menu is done rendering</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonclosebyidhandler">
+<h3>GMFSetByMenuOnCloseByIdHandler<a class="headerlink" href="#gmfsetbymenuonclosebyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On close of a specific menu type, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+<section id="gmfsetbymenuonmouseoverbyidhandler">
+<h3>GMFSetByMenuOnMouseoverByIdHandler<a class="headerlink" href="#gmfsetbymenuonmouseoverbyidhandler" title="Permalink to this heading"></a></h3>
+<dl class="field-list simple">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code></p>
+</dd>
+<dt class="field-even">Handler Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;int::iMenuType</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iID</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>On mouseover of a tile in a specific menu type, for a specific tile ID</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="value.html" class="btn btn-neutral float-left" title="Value Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lists.html" class="btn btn-neutral float-right" title="List Generation Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Kat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
