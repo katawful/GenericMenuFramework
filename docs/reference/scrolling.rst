@@ -45,6 +45,10 @@ The user traits are integral to operating a scroll bar:
 
 GMFOnScrollVerticalInitFunction
 -------------------------------
+
+.. warning::
+   This function is deprecated for the ``&Scroll;`` entity.
+
 :Args: ``@string::sTile``, ``@array::aIDs``
 :Info: This function is intended to be called continuously, such as in a ``begin menumode 1011``
 	   loop in a quest script, to provide scrolling controls. ``sTile`` is the scroll bar tile, and
@@ -54,6 +58,10 @@ GMFOnScrollVerticalInitFunction
 
 GMFOnScrollHorizontalInitFunction
 ---------------------------------
+
+.. warning::
+   This function is deprecated for the ``&Scroll;`` entity.
+
 :Args: ``@string::sTile``, ``@array::aIDs``
 :Info: This function is intended to be called continuously, such as in a ``begin menumode 1011``
 	   loop in a quest script, to provide scrolling controls. ``sTile`` is the scroll bar tile, and
@@ -63,11 +71,14 @@ GMFOnScrollHorizontalInitFunction
 
 GMFOnDragInitFunction
 ---------------------
-:Args: ``@string::sTile``
-:Info: This function initializes mouse dragging of a scroll bar. Like the two scroll functions,
-	   ``sTile`` takes the scroll bar you wish to scroll. Unlike the 2, this function works on
-	   either vertical or horizontal scroll bars. This function needs to be called continuously as
-	   well.
+:Args: ``@array::aTiles``
+:Info: This function intializes dragging of a number of scroll bars. Each index of ``aTiles`` is a
+	   stringmap that contains only the 2 keys: ``tile`` and ``id``. The tile should be the menu
+	   tile that contains the scroll bar, while the ID should be whatever ID you used for this tile.
+	   The default value for scroll bar IDs (i.e. if you are using a ``&Scroll;`` entity is **33**.
+
+	   This function is designed to work continuously for either horizontal or vertical scroll bars.
+	   The behavior of the scroll bars is up to the user, set in code and XML.
 
 Private Functions
 -----------------

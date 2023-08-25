@@ -5,17 +5,23 @@
 ;;@DESC~Used for dragging, this initializes dragging by checking UI values~
 ;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
 string_var sTile
+;;@PARA~@int::iID::The ID of the menu string
+int iID
 
-string_var sCurrComponent	;@string::sCurrComponent::Used to see what the current name is for scrolling
+string_var sCurrTile		;@string::sCurrTile::Used to see what the current name is for scrolling
+string_var sCurrFullTile		;@string::sCurrFullTile::Full component path
+int iCurrID					;@int::iCurrID::Current ID
 
-begin function {sTile}
-	Let sCurrComponent := GetActiveUIComponentName
-
-	if eval (sCurrComponent == "vertical_scroll_marker")
-		Call GMPFOnClickLeftHoldDragVerticalFunction sTile sCurrComponent
-	elseif eval (sCurrComponent == "horizontal_scroll_marker")
-		Call GMPFOnClickLeftHoldDragHorizontalFunction sTile sCurrComponent
+begin function {sTile, iID}
+	Let sCurrTile := GetActiveUIComponentName
+	Let iCurrID := GetActiveUIComponentID
+	Let sCurrFullTile := GetActiveUIComponentFullName
+	
+	if eval (sCurrTile == "vertical_scroll_marker") && (sv_Compare sTile sCurrFullTile > -2) && (iCurrID == iID)
+		Call GMPFOnClickLeftHoldDragVerticalFunction sCurrFullTile
+	elseif eval (sCurrTile == "horizontal_scroll_marker") && (sv_Compare sTile sCurrFullTile > -2) && (iCurrID == iID)
+		Call GMPFOnClickLeftHoldDragHorizontalFunction sCurrFullTile
 	endif
 
-	sv_Destruct sCurrComponent
+	sv_Destruct sCurrTile sCurrFullTile
 end

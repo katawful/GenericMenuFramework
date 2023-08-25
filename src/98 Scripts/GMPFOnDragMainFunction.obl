@@ -5,17 +5,25 @@
 ;;@DESC~This function handles both directions of dragging~
 ;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
 string_var sTile
+;;@PARA~@int::iID::The ID of the menu string
+int iID
 
-string_var sCurrComponent	;@string::sCurrComponent::Used to see what the current name is for scrolling
+string_var sCurrTile	;@string::sCurrTile::Used to see what the current name is for scrolling
+string_var sCurrFullTile	;@string::sCurrFullTile::Full component path
+int iCurrID					;@int::iCurrID::Current ID
 
-begin function {sTile}
-	Let sCurrComponent := GetActiveUIComponentName
-
-	if eval (sCurrComponent == "horizontal_scroll_marker")
-		Call GMPFOnDragHorizontalFunction sTile
-	elseif eval (sCurrComponent == "vertical_scroll_marker")
-		Call GMPFOnDragVerticalFunction sTile
+begin function {sTile, iID}
+	Let sCurrTile := GetActiveUIComponentName
+	Let iCurrID := GetActiveUIComponentID
+	Let sCurrFullTile := GetActiveUIComponentFullName
+	
+	;;KAT NOTE: We are looking to see if we are touching something that fits our
+	;;search tile as well as touching a tile with matching ID
+	if eval (sCurrTile == "horizontal_scroll_marker") && (sv_Compare sTile sCurrFullTile > -2) && (iCurrID == iID)
+		Call GMPFOnDragHorizontalFunction sCurrFullTile
+	elseif eval (sCurrTile == "vertical_scroll_marker") && (sv_Compare sTile sCurrFullTile > -2) && (iCurrID == iID)
+		Call GMPFOnDragVerticalFunction sCurrFullTile
 	endif
 
-	sv_Destruct sCurrComponent
+	sv_Destruct sCurrTile sCurrFullTile
 end

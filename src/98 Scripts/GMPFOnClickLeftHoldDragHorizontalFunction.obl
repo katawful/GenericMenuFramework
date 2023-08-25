@@ -6,25 +6,24 @@
 ;;this function will get the height values of scroll bar + the marker and return said values~
 ;;@PARA~@string::sTile::The menu string that will contain a scroll bar~
 string_var sTile
-;;@PARA~@string::sCurrComponent::The current component~
-string_var sCurrComponent
+
+string_var sShortTile 	;@string::sShortTile::The tile without the marker tile
 
 float fMarkerWidth		;@float::fMarkerWidth::Current height of the marker
 
-float fScrollX			;@float::fScrollX::X value of scroll bar
 float fScrollWidth		;@float::fScrollWidth::Width of scroll bar
 float fScrollStart		;@float::fScrollStart::Start Y position of scroll bar
 float fScrollEnd			;@float::fScrollEnd::End Y position of scroll bar
 float fScrollTotal		;@float::fScrollTotal::Total height of scrol bar
 
 array_var aX				;@array::aY::Y values from ancestry
-int iIndex				;@int::iIndex::Index for while loop
-int iSize				;@int::iSize::Size of array
 
-Begin Function {sTile, sCurrComponent}
+Begin Function {sTile}
+
+	let sShortTile := sTile[0:-26]
 
 	;; Only work if touching marker
-	if eval (sCurrComponent != "horizontal_scroll_marker")
+	if eval (sv_compare "horizontal_scroll_marker" sTile == -2)
 		return
 	endif
 
@@ -32,26 +31,20 @@ Begin Function {sTile, sCurrComponent}
 	Let GMF.bDragging := 1
 
 	;; Clamp scrolling to bounds of marker and scrollbar
-	Let fMarkerWidth := call GMFGetTileFloatValue (sTile + "\horizontal_scroll_marker") "width"
+	Let fMarkerWidth := call GMFGetTileFloatValue (sShortTile + "\horizontal_scroll_marker") "width"
 	Let fMarkerWidth *= 2
-	Let fScrollWidth := call GMFGetTileFloatValue sTile "width"
+	Let fScrollWidth := call GMFGetTileFloatValue sShortTile "width"
 
-	;; Grab total scroll height
-	Let fScrollStart := Call GMFGetTileFloatValue sTile "user1"
-	Let fScrollEnd := Call GMFGetTileFloatValue sTile "user1"
+	;; Grab total scroll width
+	Let fScrollStart := Call GMFGetTileFloatValue sShortTile "user1"
+	Let fScrollEnd := Call GMFGetTileFloatValue sShortTile "user2"
 	Let fScrollTotal := fScrollEnd - fScrollStart
 
-	;; Grab the X position to the scroll bar
-	Let aX := Call GMFGrabParentFloatTraits sTile "x"
-	Let iSize := ar_Size aX
-	while iIndex < iSize
-		Let fScrollX += aX[iIndex]
-		Let iIndex += 1
-	loop
-
 	;; Export values
-	Let GMF.fGameX := fScrollX + (fMarkerWidth / 2)
+	Let GMF.fGameX := (GetMousePos X 2) + (fMarkerWidth / 2)
 	Let GMF.fSliderPos := fScrollTotal / (fScrollWidth - fMarkerWidth)
 	Let aX := ar_Null
+
+	sv_Destruct sShortTile
 
 End
