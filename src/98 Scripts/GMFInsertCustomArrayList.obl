@@ -1,0 +1,53 @@
+﻿scn GMFInsertCustomArrayList
+
+;;@TYPE~User-Defined Function~
+;;@PUBL~Public~
+;;@DESC~This takes a tile you wish to insert a list into, alongside an array
+;;list, and inserts it. Template must be supplied in the custom array. The array
+;;should be an indexed array, with each index containing a string map. The only
+;;required key for this string map is "template", which contains the template which
+;;you wish to insert~
+;;@PARA~@string::sTile::The tile to insert an list into~
+string_var sTile
+;;@PARA~@string::sTemplate::The template to insert~
+string_var sTemplate
+;;@PARA~@array::aList::An indexed array that you wish to insert into the menu.
+;;Each index of array must contain string map with "template" as a key and other
+;;desired named values for everything else~
+array_var aList
+;;@PARA~@ref::rFunction::A function to apply to each index being processed
+;;{@string::tile, @array::list, @int::index}
+ref rFunction
+
+
+int iIndex			;@int::iIndex::Index for the array
+int iListSize		;@int::iListSize::Size of array
+string_var sListTile
+
+begin function {sTile, aList, rFunction}
+	;; Grab the basic array information to loop over
+	Let iListSize := ar_Size aList
+
+	while iIndex < iListSize
+
+		let sTemplate := aList[iIndex]["template"]
+
+		;; NOTE: Insert template because there isn't one
+		;;       This should go into the rect you desire for the list, not the rect
+		;;       you want for appearances. Tiles are free to render, add as many as
+		;;       you need.
+		InsertXMLTemplate "%z|%z|%.0f" sTile sTemplate iIndex 1011
+
+		;; Set the listindex for each item
+		let sListTile := sTile + "\" + $iIndex
+		call GMFSetTileFloatValue sListTile "listindex" iIndex
+
+		;; Call function that manipulates current item
+		;; This needs these arguments
+		if eval rFunction
+			Call rFunction sTile aList iIndex
+		endif
+		Let iIndex += 1
+	loop
+
+end
