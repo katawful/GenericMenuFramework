@@ -16,6 +16,10 @@ float fScrollStart		;@float::fScrollStart::Start Y position of scroll bar
 float fScrollEnd			;@float::fScrollEnd::End Y position of scroll bar
 float fScrollTotal		;@float::fScrollTotal::Total height of scrol bar
 
+array_var aX				;@array::aX::The X values of the ancestry
+float fSliderStart		;@float::fSliderStart::The amount of X values to slider's start
+int iIndex				;@int::iIndex::Index
+
 Begin Function {sTile}
 	
 	let sShortTile := sTile[0:-24]
@@ -24,6 +28,13 @@ Begin Function {sTile}
 	if eval (sv_Compare "vertical_scroll_marker" sTile == -2)
 		return
 	endif
+
+	;; Get slider start position
+	let aX := call GMFGrabParentFloatTraits sShortTile "x"
+	while iIndex < ((ar_Size aX) - 1)
+		let fSliderStart += aX[iIndex]
+		let iIndex += 1
+	loop
 
 	;; Enable dragging
 	Let GMF.bDragging := 1
@@ -39,8 +50,10 @@ Begin Function {sTile}
 	Let fScrollTotal := fScrollEnd - fScrollStart
 
 	;; Export values
-	Let GMF.fGameY := (GetMousePos Y 2) + (fMarkerHeight / 2)
-	Let GMF.fSliderPos := fScrollTotal / (fScrollHeight - fMarkerHeight + 0.0001)
+	Let GMF.fMarkerHeight := fMarkerHeight
+	Let GMF.fSliderStartY := fSliderStart
+	Let GMF.fSliderStopY := fSliderStart + fScrollHeight + fMarkerHeight
+	Let GMF.fSliderFactor := fScrollTotal / (fScrollHeight - fMarkerHeight + 0.0001)
 	
 	sv_Destruct sShortTile
 

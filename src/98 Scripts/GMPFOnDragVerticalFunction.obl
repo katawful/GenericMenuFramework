@@ -11,10 +11,7 @@ string_var sTile
 
 string_var sShortTile 	;@string::sShortTile::The tile without the marker tile
 
-float fScreenY		;@float::fScreenY::The screen's Y value
 float fCurrentY		;@float::fCurrentY::The cursor's current Y value
-float fGameY			;@float::fGameY::The Y value of the cursor adjusted to UI coordinates
-
 float fSliderPos		;@float::fSliderPos::The position of the slider
 
 begin Function {sTile}
@@ -27,15 +24,18 @@ begin Function {sTile}
 		return
 	endif
 
-	;; Get direct screen Y value
-	Let fScreenY := GetNumericINISetting "iSize H:Display" ; NOTE: this is height not horizontal
-	Let fCurrentY := GetMousePos y 2
-	Let fGameY := fCurrentY
+	;; Get mouse position
+	Let fCurrentY := GetMousePos Y 2
 
 	;; Clamp to slider position
 	;; INFO: The game will truncate the float value here. The variables must be floats for the math to work out
-	Let fSliderPos := (fGameY - GMF.fGameY) * GMF.fSliderPos
-
+	Let fSliderPos := (fCurrentY - GMF.fSliderStartY) * GMF.fSliderFactor
+	if eval fCurrentY < GMF.fSliderStartY
+		Let fSliderPos := 0
+	endif
+	if eval fCurrentY > GMF.fSliderStopY
+		Let fSliderPos := 10
+	endif
 	;; The marker must be set to these values before and after in order to actually apply the value
 	;; This is confirmed by UESP and Maskar
 	Call GMFSetTileFloatValue sShortTile "user5" (-999999.0)

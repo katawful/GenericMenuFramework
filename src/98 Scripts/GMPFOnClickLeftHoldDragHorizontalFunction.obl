@@ -16,24 +16,34 @@ float fScrollStart		;@float::fScrollStart::Start Y position of scroll bar
 float fScrollEnd			;@float::fScrollEnd::End Y position of scroll bar
 float fScrollTotal		;@float::fScrollTotal::Total height of scrol bar
 
-array_var aX				;@array::aY::Y values from ancestry
+array_var aX				;@array::aX::The X values of the ancestry
+float fSliderStart		;@float::fSliderStart::The amount of X values to slider's start
+int iIndex				;@int::iIndex::Index
 
 Begin Function {sTile}
 
-	let sShortTile := sTile[0:-26]
+	;; Slice off scroll marker string from tile
+	Let sShortTile := sTile[0:-26]
 
 	;; Only work if touching marker
-	if eval (sv_compare "horizontal_scroll_marker" sTile == -2)
+	if eval (sv_Compare "horizontal_scroll_marker" sTile == -2)
 		return
 	endif
+
+	;; Get slider start position
+	let aX := call GMFGrabParentFloatTraits sShortTile "x"
+	while iIndex < ((ar_Size aX) - 1)
+		let fSliderStart += aX[iIndex]
+		let iIndex += 1
+	loop
 
 	;; Enable dragging
 	Let GMF.bDragging := 1
 
 	;; Clamp scrolling to bounds of marker and scrollbar
-	Let fMarkerWidth := call GMFGetTileFloatValue (sShortTile + "\horizontal_scroll_marker") "width"
+	Let fMarkerWidth := Call GMFGetTileFloatValue (sShortTile + "\horizontal_scroll_marker") "width"
 	Let fMarkerWidth *= 2
-	Let fScrollWidth := call GMFGetTileFloatValue sShortTile "width"
+	Let fScrollWidth := Call GMFGetTileFloatValue sShortTile "width"
 
 	;; Grab total scroll width
 	Let fScrollStart := Call GMFGetTileFloatValue sShortTile "user1"
@@ -41,9 +51,10 @@ Begin Function {sTile}
 	Let fScrollTotal := fScrollEnd - fScrollStart
 
 	;; Export values
-	Let GMF.fGameX := (GetMousePos X 2) + (fMarkerWidth / 2)
-	Let GMF.fSliderPos := fScrollTotal / (fScrollWidth - fMarkerWidth)
-	Let aX := ar_Null
+	Let GMF.fMarkerWidth := fMarkerWidth
+	Let GMF.fSliderStartX := fSliderStart
+	Let GMF.fSliderStopX := fSliderStart + fScrollWidth + fMarkerWidth
+	Let GMF.fSliderFactor := fScrollTotal / (fScrollWidth - fMarkerWidth)
 
 	sv_Destruct sShortTile
 

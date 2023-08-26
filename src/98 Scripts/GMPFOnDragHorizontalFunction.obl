@@ -11,36 +11,37 @@ string_var sTile
 
 string_var sShortTile 	;@string::sShortTile::The tile without the marker tile
 
-float fScreenX		;@float::fScreenX::The screen's X value
 float fCurrentX		;@float::fCurrentX::The cursor's current X value
-float fGameX			;@float::fGameX::The X value of the cursor adjusted to UI coordinates
-
 float fSliderPos		;@float::fSliderPos::The position of the slider
 
 begin Function {sTile}
 
-	let sShortTile := sTile[0:-26]
-	
+	Let sShortTile := sTile[0:-26]
+
 	;; End dragging when left click is no longer held
 	if eval (GetMouseButtonPress 0) != 256
 		Let GMF.bDragging := 0
 		return
 	endif
 
-	;; Get direct screen X value
-	Let fScreenX := GetNumericINISetting "iSize W:Display"
+	;; Get mouse position
 	Let fCurrentX := GetMousePos x 2
-	Let fGameX := fCurrentX
 
 	;; Clamp to slider position
 	;; INFO: The game will truncate the float value here. The variables must be floats for the math to work out
-	Let fSliderPos := (fGameX - GMF.fGameX) * GMF.fSliderPos
+	Let fSliderPos := (fCurrentX - GMF.fSliderStartX) * GMF.fSliderFactor
+	if eval fCurrentX < GMF.fSliderStartX
+		Let fSliderPos := 0
+	endif
+	if eval fCurrentX > GMF.fSliderStopX
+		Let fSliderPos := 10
+	endif
 
 	;; The marker must be set to these values before and after in order to actually apply the value
 	;; This is confirmed by UESP and Maskar
 	Call GMFSetTileFloatValue sShortTile "user5" (-999999.0)
 	Call GMFSetTileFloatValue sShortTile "user5" fSliderPos ; set the position of marker via 'user5'
 	Call GMFSetTileFloatValue sShortTile "user5" 0.0
-	
+
 	sv_Destruct sShortTile
 end
