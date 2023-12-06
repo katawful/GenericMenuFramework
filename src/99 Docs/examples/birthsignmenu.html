@@ -11,11 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -104,7 +104,7 @@
            <div itemprop="articleBody">
              
   <section id="birthsign-menu-recreation">
-<h1>Birthsign Menu Recreation<a class="headerlink" href="#birthsign-menu-recreation" title="Permalink to this heading"></a></h1>
+<h1>Birthsign Menu Recreation<a class="headerlink" href="#birthsign-menu-recreation" title="Link to this heading"></a></h1>
 <p>This is a simple recreation of the vanilla birthsign menu. This shows off 3 features:
 lists/scrolling, clicking buttons, and manipulating menu/game states in real time.</p>
 <p>The important thing to ask when creating a new menu is “what do we need?” For this menu, we will
@@ -119,14 +119,14 @@ need:</p>
 axed the description of the current birthsign. Since all aspects of interactivity are based around
 the list of the birthsign, it should be the first thing we need to build.</p>
 <section id="menu-root">
-<h2>Menu Root<a class="headerlink" href="#menu-root" title="Permalink to this heading"></a></h2>
+<h2>Menu Root<a class="headerlink" href="#menu-root" title="Link to this heading"></a></h2>
 <p>Before we can display a list, we need to have the structure of a menu to put it into. Generally,
 this is referred to as the “menu root”, the primary ancestor for all parts of this specific menu.</p>
 <p>Since we are only creating a single generic menu, we only need a single XML document. We will create
 the file <code class="docutils literal notranslate"><span class="pre">Data\Menus\Generic\Kat\BirthsignRemake.xml</span></code>.</p>
 <p>The first thing we need, thus, is the <code class="docutils literal notranslate"><span class="pre">menu</span></code> tile.</p>
 <section id="menu-tile">
-<h3>Menu Tile<a class="headerlink" href="#menu-tile" title="Permalink to this heading"></a></h3>
+<h3>Menu Tile<a class="headerlink" href="#menu-tile" title="Link to this heading"></a></h3>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- birthsign.xml --&gt;</span>
 <span class="nt">&lt;menu</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;BirthsignRemake&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span><span class="nt">&lt;class&gt;</span><span class="w"> </span><span class="ni">&amp;GenericMenu;</span><span class="w"> </span><span class="nt">&lt;/class&gt;</span>
@@ -146,7 +146,7 @@ menu to take to fade in. 0.25 is a vanilla value.</p>
 document yet. Lets add a basic <code class="docutils literal notranslate"><span class="pre">rect</span></code> to do so.</p>
 </section>
 <section id="rect-tile">
-<h3>Rect Tile<a class="headerlink" href="#rect-tile" title="Permalink to this heading"></a></h3>
+<h3>Rect Tile<a class="headerlink" href="#rect-tile" title="Link to this heading"></a></h3>
 <p>As this is a simple menu, we only need one main rect tile. However, there’s a bit of a design
 dilemma here. We want a menu that looks good, but how do we actually achieve that? We can use
 <a class="reference internal" href="../xml/index.html#prefabdocuments"><span class="std std-ref">prefab documents</span></a> to achieve this. If you look inside the
@@ -156,7 +156,7 @@ generally built (using user traits). UI mods also provide their own prefab docum
 now, we just want a basic background, so for that we will used <code class="docutils literal notranslate"><span class="pre">generic_background.xml</span></code>. Lets take
 a look at this prefab real quick.</p>
 <section id="generic-background-xml">
-<h4>generic_background.xml<a class="headerlink" href="#generic-background-xml" title="Permalink to this heading"></a></h4>
+<h4>generic_background.xml<a class="headerlink" href="#generic-background-xml" title="Link to this heading"></a></h4>
 <p>When working with prefabs, we want to work with what the prefab is designed to be worked with. That
 means using user traits and underscore-prefixed traits only. Let’s see what this prefab has:</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--</span>
@@ -198,7 +198,7 @@ The other 2 traits are pretty self-explanatory.</p>
 </section>
 </section>
 <section id="implementing-the-prefab">
-<h3>Implementing the Prefab<a class="headerlink" href="#implementing-the-prefab" title="Permalink to this heading"></a></h3>
+<h3>Implementing the Prefab<a class="headerlink" href="#implementing-the-prefab" title="Link to this heading"></a></h3>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_background&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;generic_background.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;visible&gt;</span><span class="w"> </span><span class="ni">&amp;true;</span><span class="w"> </span><span class="nt">&lt;/visible&gt;</span>
@@ -235,7 +235,7 @@ launch a menu with a button, so let us create a cell with a button it:</p>
 <img alt="../_images/birthsign-cell-view.jpg" src="../_images/birthsign-cell-view.jpg" />
 <figcaption>
 <p><span class="caption-text">As this is a test, we don’t need much complication here. An activator is a quick way to test our
-menu out.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+menu out.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>It is useful to handle large functionality in object scripts with a user-defined function, so for
@@ -259,13 +259,13 @@ the button’s script we simply call a main menu function:</p>
 <img alt="../_images/birthsign-root-rect.jpg" src="../_images/birthsign-root-rect.jpg" />
 <figcaption>
 <p><span class="caption-text">Notice that despite the 1920x1080 image, the 800x500 menu does not scale accurately. This is a
-side effect of UI rendering based on its internal parameters.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+side effect of UI rendering based on its internal parameters.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Congrats! You have created a generic menu. Now we need to fill out all the details.</p>
 </section>
 <section id="displaying-current-birthsign">
-<h3>Displaying Current Birthsign<a class="headerlink" href="#displaying-current-birthsign" title="Permalink to this heading"></a></h3>
+<h3>Displaying Current Birthsign<a class="headerlink" href="#displaying-current-birthsign" title="Link to this heading"></a></h3>
 <p>Looking back to our list of features, lets work out what depends on what.</p>
 <ul class="simple">
 <li><p>List of birthsigns</p></li>
@@ -346,7 +346,7 @@ image and title is dependent upon the player’s current status, we can start th
 </div>
 <p>There’s, a lot, going on here.</p>
 <section id="image-tile">
-<h4>Image Tile<a class="headerlink" href="#image-tile" title="Permalink to this heading"></a></h4>
+<h4>Image Tile<a class="headerlink" href="#image-tile" title="Link to this heading"></a></h4>
 <p>The image tile <code class="docutils literal notranslate"><span class="pre">bmr_background_image</span></code> is where we are going to render out the current class image.
 As this is an image tile, we need to be very specific as to how this gets render.</p>
 <p>First, we use a fallback image for the <code class="docutils literal notranslate"><span class="pre">filename</span></code> trait, in this case just the Warrior birthsign
@@ -360,7 +360,7 @@ height and width of the tile.</p>
 <code class="docutils literal notranslate"><span class="pre">256x256</span></code> will suffice.</p>
 </section>
 <section id="text-tile">
-<h4>Text Tile<a class="headerlink" href="#text-tile" title="Permalink to this heading"></a></h4>
+<h4>Text Tile<a class="headerlink" href="#text-tile" title="Link to this heading"></a></h4>
 <p>This tile is a bit simpler, as it is just a text tile. Since we can’t set the <code class="docutils literal notranslate"><span class="pre">width</span></code>  and
 <code class="docutils literal notranslate"><span class="pre">height</span></code> traits, we will use fonts for the specific sizes we want. We can see the system possible
 fonts within <code class="docutils literal notranslate"><span class="pre">Oblivion.ini</span></code>. For example with a vanilla game:</p>
@@ -383,12 +383,12 @@ useful here.</p>
 <figure class="align-center" id="id3">
 <img alt="../_images/birthsign-image-text.jpg" src="../_images/birthsign-image-text.jpg" />
 <figcaption>
-<p><span class="caption-text">Functioning menu</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Functioning menu</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="scripting-current-birthsign">
-<h4>Scripting Current Birthsign<a class="headerlink" href="#scripting-current-birthsign" title="Permalink to this heading"></a></h4>
+<h4>Scripting Current Birthsign<a class="headerlink" href="#scripting-current-birthsign" title="Link to this heading"></a></h4>
 <p>Of course, we do actually want the menu to <em>do</em> something, so lets add in the scripting.</p>
 <p>The beauty of basic tiles like text and images means we don’t need to do much to change these
 values:</p>
@@ -413,14 +413,14 @@ function</span></a> this is pretty straightforward too.</p>
 <figure class="align-center" id="id4">
 <img alt="../_images/birthsign-image-current.jpg" src="../_images/birthsign-image-current.jpg" />
 <figcaption>
-<p><span class="caption-text">Current birthsign is now shown.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Current birthsign is now shown.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 </section>
 <section id="creating-a-list">
-<h2>Creating A List<a class="headerlink" href="#creating-a-list" title="Permalink to this heading"></a></h2>
+<h2>Creating A List<a class="headerlink" href="#creating-a-list" title="Link to this heading"></a></h2>
 <p>Historically, adding a list to a menu has been the most complicated and unknown part of Oblivion
 menus. GenericMenuFramework fortunately makes this simpler. What we need is a <code class="docutils literal notranslate"><span class="pre">rect</span></code> that will
 hold our list.</p>
@@ -663,7 +663,7 @@ dedicated list element.</p>
 <p>The template is the UI element for <strong>every</strong> list item. GenericMenuFramework will insert these one
 at a time, allowing for side-effects to happen when each list item is inserted.</p>
 <section id="bmr-info-box">
-<h3><code class="docutils literal notranslate"><span class="pre">bmr_info_box</span></code><a class="headerlink" href="#bmr-info-box" title="Permalink to this heading"></a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">bmr_info_box</span></code><a class="headerlink" href="#bmr-info-box" title="Link to this heading"></a></h3>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_info_box&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;target&gt;</span><span class="w"> </span><span class="ni">&amp;true;</span><span class="w"> </span><span class="nt">&lt;/target&gt;</span>
 <span class="w">       </span><span class="nt">&lt;height&gt;</span><span class="w"> </span><span class="nt">&lt;copy</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;bmr_background&quot;</span><span class="w"> </span><span class="na">trait=</span><span class="s">&quot;height&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span><span class="nt">&lt;/height&gt;</span>
@@ -679,7 +679,7 @@ need to move, but the X-position should simply be the width of <code class="docu
 this <code class="docutils literal notranslate"><span class="pre">rect</span></code>.</p>
 <p>Inside are 3 tiles:</p>
 <section id="bmr-title">
-<h4><code class="docutils literal notranslate"><span class="pre">bmr_title</span></code><a class="headerlink" href="#bmr-title" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">bmr_title</span></code><a class="headerlink" href="#bmr-title" title="Link to this heading"></a></h4>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_title&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;id&gt;</span><span class="w"> </span>121<span class="w"> </span><span class="nt">&lt;/id&gt;</span>
 <span class="w">       </span><span class="nt">&lt;visible&gt;</span><span class="w"> </span><span class="ni">&amp;true;</span><span class="w"> </span><span class="nt">&lt;/visible&gt;</span>
@@ -705,7 +705,7 @@ this <code class="docutils literal notranslate"><span class="pre">rect</span></c
 <p>We should notify the user as to what this list does. This is a basic <code class="docutils literal notranslate"><span class="pre">text</span></code> tile that does this.</p>
 </section>
 <section id="bmr-scroll-bar">
-<h4><code class="docutils literal notranslate"><span class="pre">bmr_scroll_bar</span></code><a class="headerlink" href="#bmr-scroll-bar" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">bmr_scroll_bar</span></code><a class="headerlink" href="#bmr-scroll-bar" title="Link to this heading"></a></h4>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_scroll_bar&quot;</span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;vertical_scroll.xml&quot;</span><span class="nt">/&gt;</span>
 <span class="w">       </span><span class="nt">&lt;target&gt;</span><span class="w"> </span><span class="ni">&amp;true;</span><span class="w"> </span><span class="nt">&lt;/target&gt;</span>
@@ -775,7 +775,7 @@ particular:</p>
 <p>However, this is all this tile needs to get scrolling working in this document.</p>
 </section>
 <section id="bmr-info-list-box">
-<h4><code class="docutils literal notranslate"><span class="pre">bmr_info_list_box</span></code><a class="headerlink" href="#bmr-info-list-box" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">bmr_info_list_box</span></code><a class="headerlink" href="#bmr-info-list-box" title="Link to this heading"></a></h4>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_info_list_box&quot;</span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;id&gt;</span><span class="w"> </span>123<span class="w"> </span><span class="nt">&lt;/id&gt;</span>
 <span class="w">       </span><span class="nt">&lt;depth&gt;</span><span class="w"> </span>5<span class="w"> </span><span class="nt">&lt;/depth&gt;</span>
@@ -815,7 +815,7 @@ shifted down by the height of <code class="docutils literal notranslate"><span c
 </section>
 </section>
 <section id="bmr-list-template">
-<h3><code class="docutils literal notranslate"><span class="pre">bmr_list_template</span></code><a class="headerlink" href="#bmr-list-template" title="Permalink to this heading"></a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">bmr_list_template</span></code><a class="headerlink" href="#bmr-list-template" title="Link to this heading"></a></h3>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_list_template&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/template&gt;</span>
 </pre></div>
@@ -824,7 +824,7 @@ shifted down by the height of <code class="docutils literal notranslate"><span c
 to inject into tiles during run-time. In this case, this template is used for list elements. The
 template has <strong>no</strong> traits, it only contains other valid non-template tiles.</p>
 <section id="bmr-list-item">
-<h4><code class="docutils literal notranslate"><span class="pre">bmr_list_item</span></code><a class="headerlink" href="#bmr-list-item" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">bmr_list_item</span></code><a class="headerlink" href="#bmr-list-item" title="Link to this heading"></a></h4>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_list_item&quot;</span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;depth&gt;</span><span class="w"> </span>6<span class="w"> </span><span class="nt">&lt;/depth&gt;</span>
 <span class="w">       </span><span class="nt">&lt;id&gt;</span><span class="w"> </span>200<span class="w"> </span><span class="nt">&lt;/id&gt;</span>
@@ -919,7 +919,7 @@ cases.</p>
 </dl>
 <p>Inside are 2 more tiles:</p>
 <section id="bmr-list-name">
-<h5><code class="docutils literal notranslate"><span class="pre">bmr_list_name</span></code><a class="headerlink" href="#bmr-list-name" title="Permalink to this heading"></a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">bmr_list_name</span></code><a class="headerlink" href="#bmr-list-name" title="Link to this heading"></a></h5>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_list_name&quot;</span><span class="w"> </span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;depth&gt;</span><span class="w"> </span>8<span class="w"> </span><span class="nt">&lt;/depth&gt;</span>
 <span class="w">       </span><span class="nt">&lt;string&gt;</span><span class="w"> </span><span class="nt">&lt;copy</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;parent()&quot;</span><span class="w"> </span><span class="na">trait=</span><span class="s">&quot;user1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span><span class="w"> </span><span class="nt">&lt;/string&gt;</span>
@@ -948,7 +948,7 @@ cases.</p>
 otherwise.</p>
 </section>
 <section id="bmr-list-focus">
-<h5><code class="docutils literal notranslate"><span class="pre">bmr_list_focus</span></code><a class="headerlink" href="#bmr-list-focus" title="Permalink to this heading"></a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">bmr_list_focus</span></code><a class="headerlink" href="#bmr-list-focus" title="Link to this heading"></a></h5>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_list_focus&quot;</span><span class="nt">&gt;</span>
 <span class="w">       </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;darn\focus_box.xml&quot;</span><span class="nt">/&gt;</span>
 <span class="w">       </span><span class="nt">&lt;depth&gt;</span><span class="w"> </span>7<span class="w"> </span><span class="nt">&lt;/depth&gt;</span>
@@ -972,7 +972,7 @@ needs to compare to 1 to determine if it should be visible or not.</p>
 </section>
 </section>
 <section id="scripting-the-list">
-<span id="scriptingthelist"></span><h3>Scripting the List<a class="headerlink" href="#scripting-the-list" title="Permalink to this heading"></a></h3>
+<span id="scriptingthelist"></span><h3>Scripting the List<a class="headerlink" href="#scripting-the-list" title="Link to this heading"></a></h3>
 <p>Now that we have the basics of the menu, we need to hook up all the scripting. Fortunately this is
 pretty simple overall.</p>
 <p>For the main function script, we don’t need to add much:</p>
@@ -1045,13 +1045,13 @@ use <code class="docutils literal notranslate"><span class="pre">tile_GetInfo</s
 <figure class="align-center" id="id5">
 <img alt="birthsign-plain-1" src="../_images/birthsign-list-plain-1.jpg" />
 <figcaption>
-<p><span class="caption-text">We have a working list.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-text">We have a working list.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id6">
 <img alt="birthsign-plain-2" src="../_images/birthsign-list-plain-2.jpg" />
 <figcaption>
-<p><span class="caption-text">We can even highlight items with our mouse.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text">We can even highlight items with our mouse.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>That was a lot of work, but the hardest part was done. Congrats, you’ve uncovered one of the hardest
@@ -1060,13 +1060,13 @@ list update the player’s birthsign. Both are fairly simple so lets just go wit
 </section>
 </section>
 <section id="scrolling-a-list">
-<h2>Scrolling A List<a class="headerlink" href="#scrolling-a-list" title="Permalink to this heading"></a></h2>
+<h2>Scrolling A List<a class="headerlink" href="#scrolling-a-list" title="Link to this heading"></a></h2>
 <p>Scrolling a list, even more difficult than creating a list historically, is one of the simplest
 parts of GenericMenuFramework. We need 2 things, a quest script in order to run the needed functions
 continuously and an array of IDs to target for scrolling. Dragging the scroll marker will also be
 included here, since it is even simpler to handle.</p>
 <section id="quest-script">
-<h3>Quest Script<a class="headerlink" href="#quest-script" title="Permalink to this heading"></a></h3>
+<h3>Quest Script<a class="headerlink" href="#quest-script" title="Link to this heading"></a></h3>
 <p>Quest scripts in Oblivion function as “global” scripts. Since quest objects are always in memory,
 their associated scripts are always in memory. We can use this for input behavior in this case. As
 well, since quest scripts are always in memory, we can use them as a namespace for variables. Both
@@ -1104,7 +1104,7 @@ that you want the scrolling to be active for. We need to set up this array, and 
 within <code class="docutils literal notranslate"><span class="pre">BMRFunction</span></code>.</p>
 </section>
 <section id="adding-id-array">
-<h3>Adding ID Array<a class="headerlink" href="#adding-id-array" title="Permalink to this heading"></a></h3>
+<h3>Adding ID Array<a class="headerlink" href="#adding-id-array" title="Link to this heading"></a></h3>
 <p>Since we declared the variable for the array in the quest script, we can easily access them in
 <code class="docutils literal notranslate"><span class="pre">BMRFunction</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="n">BMRFunction</span>
@@ -1165,7 +1165,7 @@ can also use the arrow keys (or controller) to navigate the list with scrolling.
 </section>
 </section>
 <section id="setting-birthsign">
-<h2>Setting Birthsign<a class="headerlink" href="#setting-birthsign" title="Permalink to this heading"></a></h2>
+<h2>Setting Birthsign<a class="headerlink" href="#setting-birthsign" title="Link to this heading"></a></h2>
 <p>Now that we have scrolling working, let’s make the menu actually do what want it to do: set the
 player’s birthsign.</p>
 <p>This is where things become more complicated from a programmer’s perspective. See, we need to be
@@ -1174,7 +1174,7 @@ information when we get the name of a object. It is functionally impossible to g
 name to an object’s editorID. So what do we do? For this, we need a deeper understanding of how
 Oblivion stores objects.</p>
 <section id="editorids-formids">
-<h3>EditorIDs &amp; FormIDs<a class="headerlink" href="#editorids-formids" title="Permalink to this heading"></a></h3>
+<h3>EditorIDs &amp; FormIDs<a class="headerlink" href="#editorids-formids" title="Link to this heading"></a></h3>
 <p>Objects in Oblivion are literally everything. Every quest, script, item, NPC, etc… is an object.
 There are two ways to express the unique tokens for each object, the “editorID” and the “formID”
 (typically referred to as a form).</p>
@@ -1199,7 +1199,7 @@ for instance, it would only store the decimal notation of this. This might seem 
 into issues with float precision along side lack of support of decimal -&gt; editorID support.</p>
 </section>
 <section id="how-to-store-forms">
-<h3>How to Store Forms<a class="headerlink" href="#how-to-store-forms" title="Permalink to this heading"></a></h3>
+<h3>How to Store Forms<a class="headerlink" href="#how-to-store-forms" title="Link to this heading"></a></h3>
 <p>So, we only have one function that can directly use forms and we can’t store editorIDs really. That
 leaves us with one real option:</p>
 <p><strong>directly storing the hexadecimal form inside the menu itself</strong></p>
@@ -1236,7 +1236,7 @@ item:</p>
 <p>This tile is just a <code class="docutils literal notranslate"><span class="pre">rect</span></code> that contains a single underscored prefix trait: <code class="docutils literal notranslate"><span class="pre">_signhex</span></code>. There’s
 nothing else we need to do with the XML document here.</p>
 <section id="scripting-form-storage">
-<h4>Scripting Form Storage<a class="headerlink" href="#scripting-form-storage" title="Permalink to this heading"></a></h4>
+<h4>Scripting Form Storage<a class="headerlink" href="#scripting-form-storage" title="Link to this heading"></a></h4>
 <p>We actually have everything we need to store the form. Remember that side-effect function in
 <a class="reference internal" href="#scriptingthelist"><span class="std std-ref">Scripting the List</span></a>? We can simply add our storage in there.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scn</span> <span class="n">BMRSetListText</span>
@@ -1269,7 +1269,7 @@ our our data <code class="docutils literal notranslate"><span class="pre">rect</
 this later.</p>
 </section>
 <section id="extracting-from-storage">
-<h4>Extracting From Storage<a class="headerlink" href="#extracting-from-storage" title="Permalink to this heading"></a></h4>
+<h4>Extracting From Storage<a class="headerlink" href="#extracting-from-storage" title="Link to this heading"></a></h4>
 <p>Now that we stored the form, we need to extract it. It’s a bit more complicated, but first we need
 to actually be able to interact with the menu. Yet again, this is pretty simple. MenuQue offers
 event handlers, which fires a function based on some game event. GenericMenuFramework wraps this up
@@ -1363,7 +1363,7 @@ as a normal EditorID. And then, since we have a reference we can do everything e
 </section>
 </section>
 <section id="finishing-up">
-<h2>Finishing Up<a class="headerlink" href="#finishing-up" title="Permalink to this heading"></a></h2>
+<h2>Finishing Up<a class="headerlink" href="#finishing-up" title="Link to this heading"></a></h2>
 <p>We have a functioning menu, but we aren’t actually done just yet. You may have tried to close the
 menu, only to realize that we can’t. But this is a bit simple to add, so lets do it.</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;text</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bmr_class_name&quot;</span><span class="nt">&gt;</span>
@@ -1403,7 +1403,7 @@ need to change the value we were using in <code class="docutils literal notransl
 <img alt="birthsign-menu-complete" src="../_images/birthsign-menu-complete.jpg" />
 <figcaption>
 <p><span class="caption-text">Note that since I’m using DarnifiedUI that the return button font is unaligned. This is a
-byproduct of mixing UI prefabs. Vanilla only UI prefabs were used here for reproducability.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+byproduct of mixing UI prefabs. Vanilla only UI prefabs were used here for reproducability.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Congrats you made a functioning menu. Many parts, but no complicated parts. And everything is pretty

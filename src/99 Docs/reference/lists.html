@@ -11,11 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -51,6 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="handlers.html">Event Handler Functions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">List Generation Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gmfinsertarraylist">GMFInsertArrayList</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gmfinsertcustomarraylist">GMFInsertCustomArrayList</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inserting-a-list-to-a-menu-tile">Inserting a List to a Menu Tile</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#list-rect">List <code class="docutils literal notranslate"><span class="pre">rect</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-template">List Template</a></li>
@@ -92,14 +93,14 @@
            <div itemprop="articleBody">
              
   <section id="list-generation-functions">
-<span id="listgeneration"></span><h1>List Generation Functions<a class="headerlink" href="#list-generation-functions" title="Permalink to this heading"></a></h1>
+<span id="listgeneration"></span><h1>List Generation Functions<a class="headerlink" href="#list-generation-functions" title="Link to this heading"></a></h1>
 <p>Generic menus in Oblivion can natively render and handle lists of items. These are used in many
 areas by the vanilla game, such as the skill menu, but can be adapted to any need. This framework
 provides a very simple interface for doing so.</p>
 <p>Historically this aspect of generic menus was unused by generic menus due to the perceived
 complexity. The only other conventional example is LINK by Maskar.</p>
 <section id="gmfinsertarraylist">
-<span id="id1"></span><h2>GMFInsertArrayList<a class="headerlink" href="#gmfinsertarraylist" title="Permalink to this heading"></a></h2>
+<span id="id1"></span><h2>GMFInsertArrayList<a class="headerlink" href="#gmfinsertarraylist" title="Link to this heading"></a></h2>
 <dl class="field-list">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sTemplate</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aList</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
@@ -108,8 +109,28 @@ complexity. The only other conventional example is LINK by Maskar.</p>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aList</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iIndex</span></code></p>
 </dd>
 <dt class="field-odd">Info<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Inserts the contents of <code class="docutils literal notranslate"><span class="pre">aList</span></code> into <code class="docutils literal notranslate"><span class="pre">sTile</span></code> using the template <code class="docutils literal notranslate"><span class="pre">sTemplate</span></code>. Without
-<code class="docutils literal notranslate"><span class="pre">rFunction</span></code>, this function will only create the number of elements for the list.
+<dd class="field-odd"><p>Inserts the contents of <code class="docutils literal notranslate"><span class="pre">aList</span></code> into <code class="docutils literal notranslate"><span class="pre">sTile</span></code> using the template <code class="docutils literal notranslate"><span class="pre">sTemplate</span></code>.</p>
+<p>Without <code class="docutils literal notranslate"><span class="pre">rFunction</span></code>, this function will only create the number of elements for the list.
+<code class="docutils literal notranslate"><span class="pre">rFunction</span></code> is a user-defined function that provides the rendered information as well as
+any side-effects intended. See below for examples.</p>
+<p>Pass 0 for <code class="docutils literal notranslate"><span class="pre">rFunction</span></code> to not use <code class="docutils literal notranslate"><span class="pre">rFunction</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="gmfinsertcustomarraylist">
+<h2>GMFInsertCustomArrayList<a class="headerlink" href="#gmfinsertcustomarraylist" title="Link to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">Args<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aList</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;ref::rFunction</span></code></p>
+</dd>
+<dt class="field-even">Function Args<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aList</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;int::iIndex</span></code></p>
+</dd>
+<dt class="field-odd">Info<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Inserts the custom contents of <code class="docutils literal notranslate"><span class="pre">aList</span></code> into <code class="docutils literal notranslate"><span class="pre">sTile</span></code>.</p>
+<p>The array passed must contain a stringmap for each index, with each stringmap at least has
+the key <code class="docutils literal notranslate"><span class="pre">template</span></code> which contains the template you wish to insert for this index.</p>
+<p>Without <code class="docutils literal notranslate"><span class="pre">rFunction</span></code>, this function will only create the number of elements for the list.
 <code class="docutils literal notranslate"><span class="pre">rFunction</span></code> is a user-defined function that provides the rendered information as well as
 any side-effects intended. See below for examples.</p>
 <p>Pass 0 for <code class="docutils literal notranslate"><span class="pre">rFunction</span></code> to not use <code class="docutils literal notranslate"><span class="pre">rFunction</span></code></p>
@@ -117,7 +138,7 @@ any side-effects intended. See below for examples.</p>
 </dl>
 </section>
 <section id="inserting-a-list-to-a-menu-tile">
-<h2>Inserting a List to a Menu Tile<a class="headerlink" href="#inserting-a-list-to-a-menu-tile" title="Permalink to this heading"></a></h2>
+<h2>Inserting a List to a Menu Tile<a class="headerlink" href="#inserting-a-list-to-a-menu-tile" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following is simply the bare minimums to have a functioning list as a reference. This is not
@@ -126,7 +147,7 @@ intended to be a copyable for end use</p>
 <p>Lists are inserted into a <code class="docutils literal notranslate"><span class="pre">rect</span></code> menu tile. It is highly recommended that you make this tile
 specific for your list, as it will simplify control of your list.</p>
 <section id="list-rect">
-<h3>List <code class="docutils literal notranslate"><span class="pre">rect</span></code><a class="headerlink" href="#list-rect" title="Permalink to this heading"></a></h3>
+<h3>List <code class="docutils literal notranslate"><span class="pre">rect</span></code><a class="headerlink" href="#list-rect" title="Link to this heading"></a></h3>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rect</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;list_rect&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">       </span><span class="nt">&lt;id&gt;</span><span class="w"> </span>100<span class="w"> </span><span class="nt">&lt;/id&gt;</span>
 <span class="w">       </span><span class="nt">&lt;target&gt;</span><span class="w"> </span><span class="ni">&amp;false;</span><span class="w"> </span><span class="nt">&lt;/target&gt;</span>
@@ -157,7 +178,7 @@ specific for your list, as it will simplify control of your list.</p>
 </dl>
 </section>
 <section id="list-template">
-<h3>List Template<a class="headerlink" href="#list-template" title="Permalink to this heading"></a></h3>
+<h3>List Template<a class="headerlink" href="#list-template" title="Link to this heading"></a></h3>
 <p>Templates are end of file XML elements that can be inserted as many times as needed into another
 tile. For lists, this template should be a <code class="docutils literal notranslate"><span class="pre">rect</span></code> that contains the elements you wish to display:</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;list_template&quot;</span><span class="nt">&gt;</span>
@@ -240,7 +261,7 @@ value</p>
 the second <code class="docutils literal notranslate"><span class="pre">rect</span></code> tile uses a prefab XML file to add a focus block to each item on mouseover.</p>
 </section>
 <section id="side-effect-function">
-<h3>Side-Effect Function<a class="headerlink" href="#side-effect-function" title="Permalink to this heading"></a></h3>
+<h3>Side-Effect Function<a class="headerlink" href="#side-effect-function" title="Link to this heading"></a></h3>
 <p>In order to maintain abstraction and simplicity, <a class="reference internal" href="#gmfinsertarraylist"><span class="std std-ref">GMFInsertArrayList</span></a>
 allows a user-defined function to be passed that allows for <em>something</em> to happen to each list item.
 The way this works is that during the loop of inserting the array contents into the menu, the passed

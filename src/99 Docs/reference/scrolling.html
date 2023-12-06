@@ -11,11 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -101,13 +101,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="scrolling-functions">
-<span id="scrollingalist"></span><h1>Scrolling Functions<a class="headerlink" href="#scrolling-functions" title="Permalink to this heading"></a></h1>
+  <div class="admonition warning" id="scrollingalist">
+<p class="admonition-title">Warning</p>
+<p>It is highly recommended to use the <code class="docutils literal notranslate"><span class="pre">&amp;Scroll;</span></code> in place of any of these functions. However it
+is limited to only one scroll bar per active menu, if multiple are needed one can use these at
+their discretion.</p>
+</div>
+<section id="scrolling-functions">
+<h1>Scrolling Functions<a class="headerlink" href="#scrolling-functions" title="Link to this heading"></a></h1>
 <p>While scrolling a list is one of the more complex features of menus, this framework makes this very
 simple. Assuming you followed the advice in <a class="reference internal" href="lists.html#listgeneration"><span class="std std-ref">List Generation Functions</span></a>, for
 the list itself adding scrolling to a menu becomes very simple.</p>
 <section id="scroll-bar-tile">
-<h2>Scroll Bar Tile<a class="headerlink" href="#scroll-bar-tile" title="Permalink to this heading"></a></h2>
+<h2>Scroll Bar Tile<a class="headerlink" href="#scroll-bar-tile" title="Link to this heading"></a></h2>
 <p>The scroll bars are generally provided by menus themselves via prefabs, for example:</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;scroll_bar&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;vertical_scroll.xml&quot;</span><span class="nt">/&gt;</span>
@@ -157,7 +163,11 @@ It’s pretty important to be specific with your own menu</p>
 </dl>
 </section>
 <section id="gmfonscrollverticalinitfunction">
-<h2>GMFOnScrollVerticalInitFunction<a class="headerlink" href="#gmfonscrollverticalinitfunction" title="Permalink to this heading"></a></h2>
+<h2>GMFOnScrollVerticalInitFunction<a class="headerlink" href="#gmfonscrollverticalinitfunction" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function is deprecated for the <code class="docutils literal notranslate"><span class="pre">&amp;Scroll;</span></code> entity.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aIDs</span></code></p>
@@ -171,7 +181,11 @@ loop in a quest script, to provide scrolling controls. <code class="docutils lit
 </dl>
 </section>
 <section id="gmfonscrollhorizontalinitfunction">
-<h2>GMFOnScrollHorizontalInitFunction<a class="headerlink" href="#gmfonscrollhorizontalinitfunction" title="Permalink to this heading"></a></h2>
+<h2>GMFOnScrollHorizontalInitFunction<a class="headerlink" href="#gmfonscrollhorizontalinitfunction" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function is deprecated for the <code class="docutils literal notranslate"><span class="pre">&amp;Scroll;</span></code> entity.</p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;array::aIDs</span></code></p>
@@ -185,21 +199,23 @@ loop in a quest script, to provide scrolling controls. <code class="docutils lit
 </dl>
 </section>
 <section id="gmfondraginitfunction">
-<h2>GMFOnDragInitFunction<a class="headerlink" href="#gmfondraginitfunction" title="Permalink to this heading"></a></h2>
-<dl class="field-list simple">
+<h2>GMFOnDragInitFunction<a class="headerlink" href="#gmfondraginitfunction" title="Link to this heading"></a></h2>
+<dl class="field-list">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;array::aTiles</span></code></p>
 </dd>
 <dt class="field-even">Info<span class="colon">:</span></dt>
-<dd class="field-even"><p>This function initializes mouse dragging of a scroll bar. Like the two scroll functions,
-<code class="docutils literal notranslate"><span class="pre">sTile</span></code> takes the scroll bar you wish to scroll. Unlike the 2, this function works on
-either vertical or horizontal scroll bars. This function needs to be called continuously as
-well.</p>
+<dd class="field-even"><p>This function intializes dragging of a number of scroll bars. Each index of <code class="docutils literal notranslate"><span class="pre">aTiles</span></code> is a
+stringmap that contains only the 2 keys: <code class="docutils literal notranslate"><span class="pre">tile</span></code> and <code class="docutils literal notranslate"><span class="pre">id</span></code>. The tile should be the menu
+tile that contains the scroll bar, while the ID should be whatever ID you used for this tile.
+The default value for scroll bar IDs (i.e. if you are using a <code class="docutils literal notranslate"><span class="pre">&amp;Scroll;</span></code> entity is <strong>33</strong>.</p>
+<p>This function is designed to work continuously for either horizontal or vertical scroll bars.
+The behavior of the scroll bars is up to the user, set in code and XML.</p>
 </dd>
 </dl>
 </section>
 <section id="private-functions">
-<h2>Private Functions<a class="headerlink" href="#private-functions" title="Permalink to this heading"></a></h2>
+<h2>Private Functions<a class="headerlink" href="#private-functions" title="Link to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These functions are private for a reason. The documentation here is purely for posterity. These
@@ -207,7 +223,7 @@ functions should not be used in any circumstance. If you find potential use in a
 functions, please notify.</p>
 </div>
 <section id="gmpfonclickholddraghorizontalfunction">
-<h3>GMPFOnClickHoldDragHorizontalFunction<a class="headerlink" href="#gmpfonclickholddraghorizontalfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnClickHoldDragHorizontalFunction<a class="headerlink" href="#gmpfonclickholddraghorizontalfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sCurrComponent</span></code></p>
@@ -223,7 +239,7 @@ script</p>
 </dl>
 </section>
 <section id="gmpfonclickholddragverticalfunction">
-<h3>GMPFOnClickHoldDragVerticalFunction<a class="headerlink" href="#gmpfonclickholddragverticalfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnClickHoldDragVerticalFunction<a class="headerlink" href="#gmpfonclickholddragverticalfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;string::sCurrComponent</span></code></p>
@@ -239,7 +255,7 @@ script</p>
 </dl>
 </section>
 <section id="gmpfondraghorizontalfunction">
-<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#gmpfondraghorizontalfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#gmpfondraghorizontalfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -253,7 +269,7 @@ scripting.</p>
 </dl>
 </section>
 <section id="id1">
-<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnDragHorizontalFunction<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -267,7 +283,7 @@ scripting.</p>
 </dl>
 </section>
 <section id="gmpfondragmainfunction">
-<h3>GMPFOnDragMainFunction<a class="headerlink" href="#gmpfondragmainfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnDragMainFunction<a class="headerlink" href="#gmpfondragmainfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -278,7 +294,7 @@ scripting.</p>
 </dl>
 </section>
 <section id="gmpfonholdleftmousemainfunction">
-<h3>GMPFOnHoldLeftMouseMainFunction<a class="headerlink" href="#gmpfonholdleftmousemainfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnHoldLeftMouseMainFunction<a class="headerlink" href="#gmpfonholdleftmousemainfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -289,7 +305,7 @@ scripting.</p>
 </dl>
 </section>
 <section id="gmpfonscrollhorizontalleftfunction">
-<h3>GMPFOnScrollHorizontalLeftFunction<a class="headerlink" href="#gmpfonscrollhorizontalleftfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnScrollHorizontalLeftFunction<a class="headerlink" href="#gmpfonscrollhorizontalleftfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -301,7 +317,7 @@ horizontally to the left.</p>
 </dl>
 </section>
 <section id="gmpfonscrollhorizontalrightfunction">
-<h3>GMPFOnScrollHorizontalRightFunction<a class="headerlink" href="#gmpfonscrollhorizontalrightfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnScrollHorizontalRightFunction<a class="headerlink" href="#gmpfonscrollhorizontalrightfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -313,7 +329,7 @@ horizontally to the right.</p>
 </dl>
 </section>
 <section id="gmpfonscrollverticalupfunction">
-<h3>GMPFOnScrollVerticalUpFunction<a class="headerlink" href="#gmpfonscrollverticalupfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnScrollVerticalUpFunction<a class="headerlink" href="#gmpfonscrollverticalupfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>
@@ -325,7 +341,7 @@ vertically to the up.</p>
 </dl>
 </section>
 <section id="gmpfonscrollverticaldownfunction">
-<h3>GMPFOnScrollVerticalDownFunction<a class="headerlink" href="#gmpfonscrollverticaldownfunction" title="Permalink to this heading"></a></h3>
+<h3>GMPFOnScrollVerticalDownFunction<a class="headerlink" href="#gmpfonscrollverticaldownfunction" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">Args<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&#64;string::sTile</span></code></p>

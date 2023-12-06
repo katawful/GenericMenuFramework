@@ -11,11 +11,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -109,7 +109,7 @@
            <div itemprop="articleBody">
              
   <section id="ui-rendering">
-<h1>UI Rendering<a class="headerlink" href="#ui-rendering" title="Permalink to this heading"></a></h1>
+<h1>UI Rendering<a class="headerlink" href="#ui-rendering" title="Link to this heading"></a></h1>
 <p>Before getting to XML, it is important to discuss how Oblivion actually renders its UI.</p>
 <p>All UI elements are flat 3D meshes with a simple texture applied. The meshes are physically rendered
 close to the camera, with the integer depth value only separated by 0.008 Y units. This is also the
@@ -117,7 +117,7 @@ reason why the FOV setting in Oblivion.ini affects the UI. With sufficiently lar
 values, one can see the apparent issues with this method of rendering.</p>
 </section>
 <section id="xml-reference">
-<span id="xmlreference"></span><h1>XML Reference<a class="headerlink" href="#xml-reference" title="Permalink to this heading"></a></h1>
+<span id="xmlreference"></span><h1>XML Reference<a class="headerlink" href="#xml-reference" title="Link to this heading"></a></h1>
 <p>XML (eXtensible Markup Language) is a markup language that Oblivion uses to store all the necessary
 structural information for its UI. The language is based on the same specification as HTML, the
 language used to render websites (what you are reading right now), so the syntax is very similar:</p>
@@ -135,7 +135,7 @@ language used to render websites (what you are reading right now), so the syntax
 implementations for the project in mind. Oblivion has a very stripped down version compared to many
 other XML implementations</p>
 <section id="oblivion-xml-limitations">
-<h2>Oblivion XML Limitations<a class="headerlink" href="#oblivion-xml-limitations" title="Permalink to this heading"></a></h2>
+<h2>Oblivion XML Limitations<a class="headerlink" href="#oblivion-xml-limitations" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>CDATA is not supported</p></li>
 <li><p>XML headers/declarations and doctypes are not supported</p></li>
@@ -160,13 +160,13 @@ contains only digits, dashes, and periods, leading to <code class="docutils lite
 </ul>
 </section>
 <section id="xml-files">
-<h2>XML Files<a class="headerlink" href="#xml-files" title="Permalink to this heading"></a></h2>
+<h2>XML Files<a class="headerlink" href="#xml-files" title="Link to this heading"></a></h2>
 <p>Generally XML files are called “documents”. For generic menus, the documents <strong>must</strong> be placed
 somewhere in <code class="docutils literal notranslate"><span class="pre">Data\Menus\Generic</span></code>. It is recommended to place your generic menu documents inside a
 folder for your plugin name or your author name for clarity. Documents will be searched from this
 directory if not prepended with <code class="docutils literal notranslate"><span class="pre">Data\Menus\Generic</span></code>.</p>
 <section id="prefab-documents">
-<span id="prefabdocuments"></span><h3>Prefab Documents<a class="headerlink" href="#prefab-documents" title="Permalink to this heading"></a></h3>
+<span id="prefabdocuments"></span><h3>Prefab Documents<a class="headerlink" href="#prefab-documents" title="Link to this heading"></a></h3>
 <p>It is possible to include documents inside another document with the <code class="docutils literal notranslate"><span class="pre">include</span></code> trait:</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;scroll_bar&quot;</span><span class="nt">/&gt;</span>
 <span class="w">       </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vertical_scroll_bar&quot;</span><span class="nt">/&gt;</span>
@@ -180,7 +180,7 @@ include a file outside of this folder.</p>
 </section>
 </section>
 <section id="xml-comments">
-<h2>XML Comments<a class="headerlink" href="#xml-comments" title="Permalink to this heading"></a></h2>
+<h2>XML Comments<a class="headerlink" href="#xml-comments" title="Link to this heading"></a></h2>
 <p>Comments in XML and similar languages are very different from most other languages. Since everything
 is written into tags, the comments themselves need to be written into tags:</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- This is a comment --&gt;</span>
@@ -190,7 +190,7 @@ is written into tags, the comments themselves need to be written into tags:</p>
 many lines as you want. Oblivion will ignore all comments.</p>
 </section>
 <section id="xml-types">
-<h2>XML Types<a class="headerlink" href="#xml-types" title="Permalink to this heading"></a></h2>
+<h2>XML Types<a class="headerlink" href="#xml-types" title="Link to this heading"></a></h2>
 <p>There are 3 types available:</p>
 <dl class="field-list simple">
 <dt class="field-odd">float<span class="colon">:</span></dt>
@@ -206,10 +206,10 @@ many lines as you want. Oblivion will ignore all comments.</p>
 </dl>
 </section>
 <section id="xml-tiles">
-<h2>XML Tiles<a class="headerlink" href="#xml-tiles" title="Permalink to this heading"></a></h2>
+<h2>XML Tiles<a class="headerlink" href="#xml-tiles" title="Link to this heading"></a></h2>
 <p>Tiles are the main block element of an XML document that is what is rendered</p>
 <section id="menu-tile">
-<h3>Menu Tile<a class="headerlink" href="#menu-tile" title="Permalink to this heading"></a></h3>
+<h3>Menu Tile<a class="headerlink" href="#menu-tile" title="Link to this heading"></a></h3>
 <p>This tile must be the root of the XML document as it controls what menu is rendered. This tile must
 also contain the <code class="docutils literal notranslate"><span class="pre">class</span></code> trait, which corresponds to one of the menu types.</p>
 <div class="highlight-Xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;menu</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MenuName&quot;</span><span class="nt">&gt;</span>
@@ -220,14 +220,14 @@ also contain the <code class="docutils literal notranslate"><span class="pre">cl
 <p>This tile generally doesn’t accept any rendering trait.</p>
 </section>
 <section id="rect-tile">
-<h3>Rect Tile<a class="headerlink" href="#rect-tile" title="Permalink to this heading"></a></h3>
+<h3>Rect Tile<a class="headerlink" href="#rect-tile" title="Link to this heading"></a></h3>
 <p>This tile is the most used tile. It is used to group other tiles for easier management, such as
 position and visibility, as well as used for features such as lists. This tile can accept any of the
 positional and rendering traits, but alpha and color should not be touched due to undefined
 behavior. If you want a tile with solid colors, it is best to use a NIF or image tile.</p>
 </section>
 <section id="image-tile">
-<h3>Image Tile<a class="headerlink" href="#image-tile" title="Permalink to this heading"></a></h3>
+<h3>Image Tile<a class="headerlink" href="#image-tile" title="Link to this heading"></a></h3>
 <p>This takes a standard, Oblivion supported, DDS texture. Oblivion supports 3 (DXT1/BC1, DXT3/BC3, and
 DXT5/BC5). DXT1 is used when there’s either no alpha or for 1-bit alpha transparency in the texture.
 For most image tiles, it is ideal to use DXT3 or DXT5 depending upon how alpha is used by the
@@ -243,24 +243,24 @@ GIMP falsely renders mipmaps when they should be disabled.</p>
 resolution if possible.</p>
 </section>
 <section id="nif-tile">
-<h3>NIF Tile<a class="headerlink" href="#nif-tile" title="Permalink to this heading"></a></h3>
+<h3>NIF Tile<a class="headerlink" href="#nif-tile" title="Link to this heading"></a></h3>
 <p>While you can’t put in arbitrary meshes due to missing alpha and materials properties on renderable
 menu NIFs, you can use any regular Oblivion NIF. These are commonly used for animated bars, such as
 the breath bar in vanilla.</p>
 <p><code class="docutils literal notranslate"><span class="pre">3D</span></code> is a valid alias for this tile.</p>
 </section>
 <section id="text-tile">
-<h3>Text Tile<a class="headerlink" href="#text-tile" title="Permalink to this heading"></a></h3>
+<h3>Text Tile<a class="headerlink" href="#text-tile" title="Link to this heading"></a></h3>
 <p>This renders text. The text width can be determined automatically if the <code class="docutils literal notranslate"><span class="pre">width</span></code> tile isn’t used.
 You can also clip the text so it automatically wraps to the next line.</p>
 </section>
 </section>
 <section id="xml-traits">
-<h2>XML Traits<a class="headerlink" href="#xml-traits" title="Permalink to this heading"></a></h2>
+<h2>XML Traits<a class="headerlink" href="#xml-traits" title="Link to this heading"></a></h2>
 <p>Trait are elements of a tile that Oblivion uses in rendering the tile. While there are a few
 traits that are used with all tile types, most are only possible to use on other tiles.</p>
 <section id="generic-traits">
-<h3>Generic Traits<a class="headerlink" href="#generic-traits" title="Permalink to this heading"></a></h3>
+<h3>Generic Traits<a class="headerlink" href="#generic-traits" title="Link to this heading"></a></h3>
 <p>These traits are available to any tile:</p>
 <dl class="field-list simple">
 <dt class="field-odd">childcount<span class="colon">:</span></dt>
@@ -282,7 +282,7 @@ with an underscore (e.g. <code class="docutils literal notranslate"><span class=
 </dl>
 </section>
 <section id="behavior-traits">
-<h3>Behavior Traits<a class="headerlink" href="#behavior-traits" title="Permalink to this heading"></a></h3>
+<h3>Behavior Traits<a class="headerlink" href="#behavior-traits" title="Link to this heading"></a></h3>
 <p>These affect the behavior of tiles, such as clicking:</p>
 <dl class="field-list simple">
 <dt class="field-odd">clickcountafter<span class="colon">:</span></dt>
@@ -388,7 +388,7 @@ integer value, and is generally set to true</p>
 </dl>
 </section>
 <section id="box-rendering-traits">
-<h3>Box Rendering Traits<a class="headerlink" href="#box-rendering-traits" title="Permalink to this heading"></a></h3>
+<h3>Box Rendering Traits<a class="headerlink" href="#box-rendering-traits" title="Link to this heading"></a></h3>
 <p>These traits are used in the direct rendering of most tiles:</p>
 <dl class="field-list simple">
 <dt class="field-odd">clips<span class="colon">:</span></dt>
@@ -439,7 +439,7 @@ default for all tiles, and 0 is presumed true</p>
 </dl>
 </section>
 <section id="color-rendering-traits">
-<h3>Color Rendering Traits<a class="headerlink" href="#color-rendering-traits" title="Permalink to this heading"></a></h3>
+<h3>Color Rendering Traits<a class="headerlink" href="#color-rendering-traits" title="Link to this heading"></a></h3>
 <p>These traits affect the color rendering of tiles. These affect the vertex colors:</p>
 <dl class="field-list simple">
 <dt class="field-odd">alpha<span class="colon">:</span></dt>
@@ -462,7 +462,7 @@ and should be avoided</p>
 </dl>
 </section>
 <section id="image-traits">
-<h3>Image Traits<a class="headerlink" href="#image-traits" title="Permalink to this heading"></a></h3>
+<h3>Image Traits<a class="headerlink" href="#image-traits" title="Link to this heading"></a></h3>
 <p>These traits only apply to the <code class="docutils literal notranslate"><span class="pre">image</span></code> tile:</p>
 <dl class="field-list simple">
 <dt class="field-odd">cropx<span class="colon">:</span></dt>
@@ -503,7 +503,7 @@ If set to -1, this tile will scale to fit the boundaries without care for propor
 </dl>
 </section>
 <section id="menu-traits">
-<h3>Menu Traits<a class="headerlink" href="#menu-traits" title="Permalink to this heading"></a></h3>
+<h3>Menu Traits<a class="headerlink" href="#menu-traits" title="Link to this heading"></a></h3>
 <p>These traits are unique to the <code class="docutils literal notranslate"><span class="pre">menu</span></code> tile, which itself is generally restricted to these
 traits:</p>
 <dl class="field-list simple">
@@ -526,7 +526,7 @@ and appears to a float numerical value</p>
 </dl>
 </section>
 <section id="nif-traits">
-<h3>NIF Traits<a class="headerlink" href="#nif-traits" title="Permalink to this heading"></a></h3>
+<h3>NIF Traits<a class="headerlink" href="#nif-traits" title="Link to this heading"></a></h3>
 <p>These traits only apply to the <code class="docutils literal notranslate"><span class="pre">nif</span></code> and <code class="docutils literal notranslate"><span class="pre">3d</span></code> tiles:</p>
 <dl class="field-list simple">
 <dt class="field-odd">animation<span class="colon">:</span></dt>
@@ -539,7 +539,7 @@ isn’t prefixed</p>
 </dl>
 </section>
 <section id="text-traits">
-<h3>Text Traits<a class="headerlink" href="#text-traits" title="Permalink to this heading"></a></h3>
+<h3>Text Traits<a class="headerlink" href="#text-traits" title="Link to this heading"></a></h3>
 <p>These traits are unique to the <code class="docutils literal notranslate"><span class="pre">text</span></code> tile:</p>
 <dl class="field-list simple">
 <dt class="field-odd">font<span class="colon">:</span></dt>
@@ -578,7 +578,7 @@ rounded down during rendering. Below 1 is treated as no width</p>
 </section>
 </section>
 <section id="xml-operators">
-<h2>XML Operators<a class="headerlink" href="#xml-operators" title="Permalink to this heading"></a></h2>
+<h2>XML Operators<a class="headerlink" href="#xml-operators" title="Link to this heading"></a></h2>
 <p>Operators behave differently to other language due to how XML processes data. All values are stored
 in a stack, that roughly corresponds to the structure of a XML document. Therefore, there are no
 real variables and instead everything is based around the “current value” of the parsing. For
@@ -594,7 +594,7 @@ example:</p>
 <p>You need to put a value into the “current working value”  of the parser. That is then kept in
 memory as successive operators are applied to the current working value.</p>
 <section id="copy-operator">
-<h3>Copy Operator<a class="headerlink" href="#copy-operator" title="Permalink to this heading"></a></h3>
+<h3>Copy Operator<a class="headerlink" href="#copy-operator" title="Link to this heading"></a></h3>
 <p>This puts the value of this element into the current working value CWV. If the CWV is a number
 than this operator also has the special function of taking a trait with the structure of
 <code class="docutils literal notranslate"><span class="pre">_trait_</span></code> and suffixing the CWV to it. This can be used for switch cases, and is already in use
@@ -623,7 +623,7 @@ repair):</p>
 </ul>
 </section>
 <section id="other-operators">
-<h3>Other Operators<a class="headerlink" href="#other-operators" title="Permalink to this heading"></a></h3>
+<h3>Other Operators<a class="headerlink" href="#other-operators" title="Link to this heading"></a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">abs<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Returns the absolute value of the current working value</p>
@@ -729,7 +729,7 @@ some other tile and its successive traits:</p>
 </div>
 </section>
 <section id="selectors">
-<span id="id1"></span><h3>Selectors<a class="headerlink" href="#selectors" title="Permalink to this heading"></a></h3>
+<span id="id1"></span><h3>Selectors<a class="headerlink" href="#selectors" title="Link to this heading"></a></h3>
 <p>These are trait “functions” used when using the <code class="docutils literal notranslate"><span class="pre">src</span></code> attribute of an operator or trait. They
 correspond to some other value found in Oblivion’s menu memory:</p>
 <dl class="field-list simple">
