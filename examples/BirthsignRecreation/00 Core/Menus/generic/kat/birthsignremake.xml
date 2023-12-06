@@ -197,8 +197,8 @@
             </listclip>
             <clicksound> 1 </clicksound>
             <listindex> 0 </listindex> <!-- the current index for the item, set to 0 here -->
-            <user1> </user1> <!-- list text -->
-            <user2> nil </user2> <!--sign hex value -->
+            <user1> </user1> <!-- option text -->
+            <user2>  </user2> <!-- current selection -->
             <xdefault> &false; </xdefault> <!-- Engine value, unknown but must be set -->
             <xlist> &xitem; </xlist> <!-- this is the item of the list, must be set -->
             <xup> &prev; </xup>
