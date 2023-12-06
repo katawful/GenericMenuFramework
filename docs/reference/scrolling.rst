@@ -1,5 +1,10 @@
 .. _scrollingalist:
 
+.. warning::
+   It is highly recommended to use the ``&Scroll;`` in place of any of these functions. However it
+   is limited to only one scroll bar per active menu, if multiple are needed one can use these at
+   their discretion.
+
 Scrolling Functions
 ===================
 
